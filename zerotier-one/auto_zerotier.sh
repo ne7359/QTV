@@ -18,15 +18,15 @@ echo "identity :$identity=============================================="
 apt-get -y install build-essential
 apt-get install git -y
 git clone https://gitee.com/MINGERTAI/ZeroTierOne.git
-cd /root/ZeroTierOne/attic/world/
+cd ./ZeroTierOne/attic/world/
 sed -i '/roots.push_back/d' ./mkworld.cpp
 sed -i '/roots.back()/d' ./mkworld.cpp 
 sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp 
 sed -i '86i roots.back().identity = Identity(\"'"$identity"'\");' ./mkworld.cpp 
-sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp
+sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp 
 source ./build.sh
 ./mkworld
-mv /root/ZeroTierOne/attic/world/world.bin ./planet
+mv ./world.bin ./planet
 \cp -r ./planet /var/lib/zerotier-one/
 \cp -r ./planet /root
 systemctl restart zerotier-one.service
