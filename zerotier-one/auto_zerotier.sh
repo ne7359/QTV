@@ -7,7 +7,9 @@ apt autoremove
 apt update -y
 apt install curl -y
 echo "********************************************************************************************************************"
-echo "#                deabin unbuntu自动安装zerotier 并设置的为planet服务器 放在root目录执行                                #"
+echo "*                                                                                                                  *"
+echo "*                deabin unbuntu自动安装zerotier并设置的为planet服务器 放在root目录执行                                *"
+echo "*                                                                                                                  *"
 echo "********************************************************************************************************************"
 curl -s https://install.zerotier.com/ | sudo bash
  
