@@ -23,10 +23,11 @@ sed -i '/roots.push_back/d' ./mkworld.cpp
 sed -i '/roots.back()/d' ./mkworld.cpp 
 sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp 
 sed -i '86i roots.back().identity = Identity(\"'"$identity"'\");' ./mkworld.cpp 
-sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp 
+sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp
+chmod +x ./build.sh && chmod +x ./mkworld.cpp
 source ./build.sh
 ./mkworld.cpp
-mv ./world.bin ./planet
+suto -rf mv ./world.bin ./planet
 \cp -r ./planet /var/lib/zerotier-one/
 \cp -r ./planet /root
 systemctl restart zerotier-one.service
