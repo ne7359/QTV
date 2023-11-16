@@ -27,7 +27,7 @@ mv ./world.bin ./planet
 \cp -r ./planet /var/lib/zerotier-one/
 \cp -r ./planet /root
 systemctl restart zerotier-one.service
-wget https://raw.githubusercontent.com/MINGERTAI/QTV/main/zerotier-one/ztncui_0.8.7_amd64.deb
+wget https://github.com/MINGERTAI/QTV/raw/main/zerotier-one/ztncui_0.8.6_amd64.deb
 sudo dpkg -i ztncui_0.8.7_amd64.deb*
 cd /opt/key-networks/ztncui/
 sudo sh -c "echo HTTPS_PORT=3443 >> /opt/key-networks/ztncui/.env"
