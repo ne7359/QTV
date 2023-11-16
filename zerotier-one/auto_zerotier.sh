@@ -27,7 +27,8 @@ sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));'
 chmod +x ./build.sh && chmod +x ./mkworld.cpp
 source ./build.sh
 ./mkworld.cpp
-suto -rf mv ./world.bin ./planet
+cd && cd /root/ZeroTierOne/attic/world/
+suto -rf mv /root/ZeroTierOne/attic/world/world.bin ./planet
 \cp -r ./planet /var/lib/zerotier-one/
 \cp -r ./planet /root
 systemctl restart zerotier-one.service
