@@ -22,12 +22,13 @@ sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp
 sed -i '86i roots.back().identity = Identity(\"'"$identity"'\");' ./mkworld.cpp 
 sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp 
 source ./build.sh
+cd ZeroTierOne/attic/world/
 ./mkworld
 mv ./world.bin ./planet
 \cp -r ./planet /var/lib/zerotier-one/
 \cp -r ./planet /root
 systemctl restart zerotier-one.service
-wget https://github.com/MINGERTAI/QTV/raw/main/zerotier-one/ztncui_0.8.6_amd64.deb
+wget https://github.com/MINGERTAI/QTV/raw/main/zerotier-one/ztncui_0.8.6_amd64.deb > ./root/ztncui_0.8.6_amd64.deb
 sudo dpkg -i ztncui_0.8.7_amd64.deb*
 cd /opt/key-networks/ztncui/
 sudo sh -c "echo HTTPS_PORT=3443 >> /opt/key-networks/ztncui/.env"
