@@ -24,10 +24,8 @@ sed -i '/roots.back()/d' ./mkworld.cpp
 sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp 
 sed -i '86i roots.back().identity = Identity(\"'"$identity"'\");' ./mkworld.cpp 
 sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp
-chmod +x ./build.sh && chmod +x ./mkworld.cpp
 source ./build.sh
-./mkworld.cpp
-cd && cd /root/ZeroTierOne/attic/world/
+./mkworld
 suto -rf mv /root/ZeroTierOne/attic/world/world.bin ./planet
 \cp -r ./planet /var/lib/zerotier-one/
 \cp -r ./planet /root
