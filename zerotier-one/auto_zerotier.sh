@@ -42,5 +42,7 @@ sudo sh -c "echo HTTP_ALL_INTERFACES=yes >> /opt/key-networks/ztncui/.env"
 sudo chmod 400 /opt/key-networks/ztncui/.env
 sudo chown ztncui.ztncui /opt/key-networks/ztncui/.env
 systemctl restart ztncui
-# rm -rf /root/ZeroTierOne
+rm -rf /root/ZeroTierOne
+rm -rf /root/.config
+rm -rf /root/ztncui_0.8.7_amd64.deb
 echo "**********安装成功*********************************************************************************"
