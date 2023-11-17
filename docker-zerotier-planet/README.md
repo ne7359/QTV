@@ -85,9 +85,9 @@ service docker start
 git clone https://github.com/xubiaolin/docker-zerotier-planet.git
 ```
 
-加速地址
+下载项目源码zip文件
 ```
-git clone https://ghproxy.markxu.online/https://github.com/xubiaolin/docker-zerotier-planet.git
+wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip
 ```
 
 ## 3.3：执行安装脚本
