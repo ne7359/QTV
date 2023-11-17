@@ -85,9 +85,9 @@ service docker start
 git clone https://github.com/xubiaolin/docker-zerotier-planet.git
 ```
 
-下载项目源码zip文件
+下载项目源码zip文件加起动安装命令
 ```
-wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip
+wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip && unzip docker-zerotier-planet.zip -d docker-zerotier-planet && cd docker-zerotier-planet && ./deploy.sh
 ```
 
 ## 3.3：执行安装脚本
