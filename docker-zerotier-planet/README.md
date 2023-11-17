@@ -26,9 +26,7 @@
   - [4. 我更换了IP需要怎么处理？](#4-我更换了ip需要怎么处理)
   - [5. PVE lxc 容器没有创建网卡](#5-pve-lxc-容器没有创建网卡)
   - [6. 管理后台忘记密码怎么办：](#6-管理后台忘记密码怎么办)
-- [开发计划](#开发计划)
-- [风险声明](#风险声明)
-- [类似项目](#类似项目)
+
 ---
 # 1：ZeroTier 介绍
 
@@ -305,13 +303,6 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 ## 6. 管理后台忘记密码怎么办：
 建议重装
 
-# 开发计划
-🥰您的捐助可以让开发计划的速度更快🥰
-- [ ] 多planet支持
-- [ ] 3443端口自定义支持
-- [ ] planet和controller分离部署
-
-
 # 风险声明
 
 本项目仅供学习和研究使用，不鼓励用于商业用途。我们不对任何因使用本项目而导致的任何损失负责。
@@ -325,9 +316,3 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 
 【金秋大促】爆款云主机2核2G3M低至66元首年，优惠直达链接:
 https://daili.jd.com/s?linkNo=XF2RVUILETHMCX7BGKAFQHBG2JUUE7S76XQIWTR74W3LQQS6OLTQM5XEITBWPC4WZA6UGATAQLY674QVVELZCIABN4
-
-# 捐助和支持
-
-如果觉得本项目对您有帮助，欢迎通过扫描下方赞赏码捐助项目 :)
-
-<img src="asserts/donate.jpg" alt="donate" width="400" height="400" />
