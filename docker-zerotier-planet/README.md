@@ -309,10 +309,4 @@ lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 
 
 # 类似项目
-- [wireguard一键脚本](https://github.com/xubiaolin/wireguard-onekey)
-
-# 推广
-京东云主机，安全稳定，性能强劲，新客下单专享特惠
-
-【金秋大促】爆款云主机2核2G3M低至66元首年，优惠直达链接:
-https://daili.jd.com/s?linkNo=XF2RVUILETHMCX7BGKAFQHBG2JUUE7S76XQIWTR74W3LQQS6OLTQM5XEITBWPC4WZA6UGATAQLY674QVVELZCIABN4
+- [相关链接](https://segmentfault.com/a/1190000040618153)
