@@ -17,18 +17,19 @@ identity=`cat /var/lib/zerotier-one/identity.public`
 echo "identity :$identity=============================================="
 apt-get -y install build-essential
 apt-get install git -y
-git clone https://gitee.com/MINGERTAI/ZeroTierOne.git
+git clone https://ghproxy.markxu.online/https://github.com/zerotier/ZeroTierOne.git
 cd ./ZeroTierOne/attic/world/
 sed -i '/roots.push_back/d' ./mkworld.cpp
 sed -i '/roots.back()/d' ./mkworld.cpp 
 sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp 
 sed -i '86i roots.back().identity = Identity(\"'"$identity"'\");' ./mkworld.cpp 
 sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp 
-source ./build.sh
-./mkworld
-mv ./world.bin ./planet
-\cp -r ./planet /var/lib/zerotier-one/
-\cp -r ./planet /root
+&& cd ./ZeroTierOne/attic/world/ && source ./build.sh \
+&& sleep 5s \
+&& cd ./ZeroTierOne/attic/world/ && ./mkworld \
+&& cp world.bin ./planet
+&& cp -r ./planet /var/lib/zerotier-one/
+&& cp -r ./planet /root
 systemctl restart zerotier-one.service
 cd && wget https://github.com/MINGERTAI/QTV/raw/main/zerotier-one/ztncui_0.8.7_amd64.deb
 sudo dpkg -i ztncui_0.8.7_amd64.deb
