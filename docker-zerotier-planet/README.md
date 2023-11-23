@@ -89,7 +89,7 @@ git clone https://github.com/xubiaolin/docker-zerotier-planet.git
 
 下载项目源码zip文件并执行安装脚本
 ```
-wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip && unzip docker-zerotier-planet.zip -d docker-zerotier-planet && chmod +x docker-zerotier-planet && mkdir -f docker-zerotier-planet.zip && cd docker-zerotier-planet && ./setup.sh
+wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip && unzip docker-zerotier-planet.zip -d docker-zerotier-planet && chmod +x docker-zerotier-planet && rm -f docker-zerotier-planet.zip && cd docker-zerotier-planet && bash ./setup.sh
 ```
 管理端口修改：修改源码docker-zerotier-planet文件夹下Dockerfile 第20行 HTTP_PORT=3443 你可以更改与你现在使用的端口不冲突的端口，比如改成 HTTP_PORT=4000
 
