@@ -1,5 +1,7 @@
 # 自编译 docker-zerotier-planet
 
+- [tiredofit zerotier](https://github.com/tiredofit/docker-zerotier)
+- [tiredofit moon](https://github.com/trganda/docker-zerotier-moon/tree/main#quickstart)
 - [1：ZeroTier 介绍](#1zerotier-介绍)
 - [2：为什么要自建PLANET 服务器](#2为什么要自建planet-服务器)
 - [3：开始安装](#3开始安装)
