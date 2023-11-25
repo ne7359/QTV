@@ -1,3 +1,9 @@
+###################################  通过github api 划取最新的 releases 版本号方法  ####################################################
+#  curl --silent "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq -r '.[0].tag_name'                                #
+#  curl -s "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq '.[0].tag_name'                                         #
+#  wget --no-check-certificate -qO- https://api.github.com/repos/p4gefau1t/trojan-go/tags | grep 'name' | cut -d\" -f4 | head -1     #
+######################################################################################################################################
+
 # 使用 Alpine Linux 3.17 作为基础镜像
 FROM alpine:3.17 as builder
 
@@ -40,7 +46,7 @@ RUN mkdir -p /root/.cargo \
 RUN rustup toolchain install stable
 
 # 克隆和编译 ZeroTier One
-RUN ZEROTIER_ONE_VERSION=`curl -s "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq '.[0].tag_name'` && \
+RUN ZEROTIER_ONE_VERSION=`curl -s "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq -r '.[0].tag_name'` && \
     curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
     && tar fxz /tmp/ZeroTierOne.tar.gz \
     && mv /app/ZeroTierOne-* /app/ZeroTierOne \
