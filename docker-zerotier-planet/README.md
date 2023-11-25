@@ -233,7 +233,7 @@ PS C:\Windows\system32>
 5. `zerotier-cli peers` 可以看到` planet` 角色
 
 # 参考链接
-[zerotier-虚拟局域网详解](https://www.glimmer.ltd/2021/3299983056/)
+[zerotier-虚拟局域网详解](https://www.glimmer.ltd/p/bb4e183b/)
 
 [五分钟自建 ZeroTier 的 Planet/Controller](https://v2ex.com/t/799623)
 
