@@ -84,19 +84,19 @@ service docker start
 ```
   
 ## 3.2：下载项目源码
-官方地址
+项目源码地址目前版本只支持1.10.2但是修改官方编译快
 ```
 git clone https://github.com/xubiaolin/docker-zerotier-planet.git
 ```
 
-下载项目源码zip文件并执行安装脚本 也可以选择tar压缩包安装
+### 支持与官方同步目前版本号为v1.12.2，下载项目源码zip文件并执行编译安装脚本 也可以选择tar压缩包安装
 ```
-wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip && unzip docker-zerotier-planet.zip -d docker-zerotier-planet && chmod +x docker-zerotier-planet && rm -f docker-zerotier-planet.zip && cd docker-zerotier-planet && bash ./setup.sh
+wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip && unzip docker-zerotier-planet.zip -d docker-zerotier-planet && chmod 777 docker-zerotier-planet && rm -f docker-zerotier-planet.zip && cd docker-zerotier-planet && ./deploy.sh
 ```
 
-下载项目源码tar文件并执行安装脚本 也可以选择zip压缩包安装
+### 支持与官方同步目前版本号为v1.12.2，下载项目源码tar文件并执行安装脚本 也可以选择zip压缩包安装
 ```
-wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.tar && tar -xvf docker-zerotier-planet.tar && chmod +x docker-zerotier-planet && rm -f docker-zerotier-planet.tar && cd docker-zerotier-planet && bash ./setup.sh
+wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.tar && tar -xvf docker-zerotier-planet.tar && chmod 777 docker-zerotier-planet && rm -f docker-zerotier-planet.tar && cd docker-zerotier-planet && deploy.sh
 ```
 管理端口修改：修改源码docker-zerotier-planet文件夹下Dockerfile 第20行 HTTP_PORT=3443 你可以更改与你现在使用的端口不冲突的端口，比如改成 HTTP_PORT=4000
 
