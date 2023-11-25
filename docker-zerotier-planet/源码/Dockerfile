@@ -43,7 +43,8 @@ RUN mkdir -p /root/.cargo \
 RUN rustup toolchain install stable
 
 # 克隆和编译 ZeroTier One
-RUN curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
+RUN ZEROTIER_ONE_VERSION=`curl --silent "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'` \
+    && curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
     && tar fxz /tmp/ZeroTierOne.tar.gz \
     && mv /app/ZeroTierOne-* /app/ZeroTierOne \
     && rm -rf /tmp/ZeroTierOne.tar.gz \
