@@ -108,7 +108,7 @@ cd docker-zerotier-planet
 
 运行 `deploy.sh` 脚本
 ```
-./setup.sh
+deploy.sh
 ```
 
 根据提示来选择即可，操作完成后会自动部署
