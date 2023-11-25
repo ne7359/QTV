@@ -1,4 +1,4 @@
-# 自编译 docker-zerotier-planet
+# 自编译 docker-zerotier-planet v.1.12.2
 
 - [tiredofit zerotier](https://github.com/tiredofit/docker-zerotier)
 - [tiredofit moon](https://github.com/trganda/docker-zerotier-moon/tree/main#quickstart)
