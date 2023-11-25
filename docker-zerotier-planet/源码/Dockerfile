@@ -6,6 +6,8 @@ ARG ZT_PORT
 
 # 设置时区
 ENV TZ=Asia/Shanghai
+
+# 设置ZeroTierOne版本号，设置最新的，去官网查看然后输入版本号
 ENV ZEROTIER_ONE_VERSION=1.12.2
 
 # 设置工作目录
