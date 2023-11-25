@@ -89,7 +89,7 @@ service docker start
 git clone https://github.com/xubiaolin/docker-zerotier-planet.git
 ```
 
-### 支持与官方同步目前版本号为v1.12.2，下载项目源码zip文件并执行编译安装脚本 也可以选择tar压缩包安装
+### 支持与官方同步目前版本号为v1.12.2，下载项目源码zip文件并执行编译安装脚本 也可以选择tar.gz压缩包安装
 ```
 wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.zip && unzip docker-zerotier-planet.zip -d docker-zerotier-planet && chmod 777 docker-zerotier-planet && rm -f docker-zerotier-planet.zip && cd docker-zerotier-planet && ./deploy.sh
 ```
