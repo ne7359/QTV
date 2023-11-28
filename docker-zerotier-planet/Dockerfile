@@ -13,6 +13,8 @@ ARG ZT_PORT
 # 设置时区
 ENV TZ=Asia/Shanghai
 
+ENV ZEROTIER_ONE_VERSION=1.12.2
+
 # 设置工作目录
 WORKDIR /app
 
@@ -46,8 +48,9 @@ RUN mkdir -p /root/.cargo \
 RUN rustup toolchain install stable
 
 # 克隆和编译 ZeroTier One
-RUN ZEROTIER_ONE_VERSION=`curl -s "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq -r '.[0].tag_name'` \
-    && curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
+#RUN ZEROTIER_ONE_VERSION=`curl -s "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq -r '.[0].tag_name'` \
+#    && curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
+RUN curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
     && tar fxz /tmp/ZeroTierOne.tar.gz \
     && mv /app/ZeroTierOne-* /app/ZeroTierOne \
     && rm -rf /tmp/ZeroTierOne.tar.gz \
