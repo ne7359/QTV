@@ -59,7 +59,8 @@ RUN curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZER
     && make install
 
 # 克隆并安装 ztncui
-RUN mkdir /app -p && cd /app && git clone --progress https://ghproxy.markxu.online/https://github.com/key-networks/ztncui.git \
+# RUN mkdir /app -p && cd /app && git clone --progress https://ghproxy.markxu.online/https://github.com/key-networks/ztncui.git \
+RUN mkdir /app -p && cd /app && git clone --progress https://gitee.com/MINGERTAI/ztncui.git \
     && cd /app/ztncui/src \
     && cp /app/patch/binding.gyp . \
     && echo "开始配置npm环境" \
