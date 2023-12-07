@@ -3,13 +3,6 @@
 imageName="zerotier-planet"
 
 function install() {
-  ZEROTIER_ONE_VERSION=`curl -s "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq -r '.[0].tag_name'` \
-    && curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
-    && tar fxz /tmp/ZeroTierOne.tar.gz \
-    && mv ZeroTierOne-* ZeroTierOne \
-    && rm -rf /tmp/ZeroTierOne.tar.gz
-  echo "下载主代码 ZeroTierOne 完成"
-  
   read -p "请输入zerotier-planet要使用的端口号,例如9994（数字）: " port
 
   # 确保端口号是数字
