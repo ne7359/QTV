@@ -45,8 +45,15 @@ RUN mkdir -p /root/.cargo \
 # 安装 Rust 工具链
 RUN rustup toolchain install stable
 
+# 设置环境变量
+ENV ENV ZEROTIER_ONE_VERSION=${ZEROTIER_ONE_VERSION}
+
 # 克隆和编译 ZeroTier One
-RUN git clone --branch main https://gitee.com/MINGERTAI/ZeroTierOne.git /app/ZeroTierOne \
+RUN ZEROTIER_ONE_VERSION=`curl -s "https://api.github.com/repos/zerotier/ZeroTierOne/releases" | jq -r '.[0].tag_name'` && \
+    curl https://codeload.github.com/zerotier/ZeroTierOne/tar.gz/refs/tags/${ZEROTIER_ONE_VERSION} --output /tmp/ZeroTierOne.tar.gz \
+    && tar fxz /tmp/ZeroTierOne.tar.gz \
+    && mv /app/ZeroTierOne-* /app/ZeroTierOne \
+    && rm -rf /tmp/ZeroTierOne.tar.gz \
     && cd /app/ZeroTierOne \
     && make ZT_SYMLINK=1 \
     && make install
