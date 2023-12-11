@@ -96,6 +96,9 @@ wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zer
 
 ### 支持与官方同步目前版本号为v1.12.2，下载项目源码tar.gz文件并执行安装脚本 也可以选择zip压缩包安装
 ```
+sudo apt-get update && sudo apt-get install -y jq
+```
+```
 wget https://github.com/MINGERTAI/QTV/raw/main/docker-zerotier-planet/docker-zerotier-planet.tar.gz && tar zxvf docker-zerotier-planet.tar.gz && chmod +x docker-zerotier-planet/deploy.sh && rm -rf docker-zerotier-planet.tar.gz && cd docker-zerotier-planet && deploy.sh
 ```
 管理端口修改：修改源码docker-zerotier-planet文件夹下Dockerfile 第20行 HTTP_PORT=3443 你可以更改与你现在使用的端口不冲突的端口，比如改成 HTTP_PORT=4000
