@@ -140,7 +140,10 @@ planet文件路径为 /tmp/planet
 planet server端口为: 9994, 请在防火墙放行该端口的tcp和udp协议
 enjoy~
 ```
-
+重新启动命令
+```
+docker run -d -p 9994:9994 -p 9994:9994/udp -p 3443:3443 --name zerotier-planet --restart unless-stopped zerotier-planet
+```
 
 ## 3.4 下载 `planet` 文件
 脚本运行完成后，会在 `/tmp/` 目录下有个 `planet` 文件
