@@ -45,3 +45,12 @@ mv ./world.bin ./planet
 \cp -r ./planet /var/lib/zerotier-one/
 \cp -r ./planet /root﻿​
 ```
+（4-1）. 重启官方客户端
+```
+systemctl restart zerotier-one.service
+```
+（5）. 安装 planet 服务器的管理系统 ztncui ubunti使用下面代码
+```
+wget https://gitee.com/MINGERTAI/ztncui/releases/download/ztncui_0.8.7/ztncui_0.8.7_amd64.deb
+sudo dpkg -i ztncui_0.8.7_amd64.deb
+```
