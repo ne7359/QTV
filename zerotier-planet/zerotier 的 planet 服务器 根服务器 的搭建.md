@@ -16,7 +16,7 @@ identity.public 里的是：
 ```
 2dcdb49f24:0:2e39cb1b36c96bea35a4ae506e15bad97019c48880e66fe9310453977dd9ce7981987bdb94e1e8eb4cd14d09d27aeeaf1c9658bb98b1bc7107a7e3d427d5bdc2
 ```
-authtoken.secret 里的是：
+authtoken.secret： 用于/opt/key-networks/ztncui/.env authtoken.secret里的是
 ```
 w8cl25tzb38dvwffenucrbug
 ```
