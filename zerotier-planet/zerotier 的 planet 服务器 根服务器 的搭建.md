@@ -150,4 +150,67 @@ zerotier-cli join xxxxxxxxxx
 
 （12）在其他设备上执行 zerotier-cli listpeers 命令可以看到你架设成功的 planet 服务器，注意这里的 planet 服务器是不显示 ip 的。具体见下图
 
-![ui](asserts/ztncui.png)
+![ui](img/001.jpg)
+
+最后 planet 服务器可以添加虚拟局域网的 dns 服务器，虚拟路由器等功能，但是无法控制各虚拟节点，这里官方已经给出了明确的说明。
+
+客户端主要为 Windows, Mac, Linux, Android
+
+4.1 Windows 配置
+
+首先去 zerotier 官网下载一个 zerotier 客户端
+
+将 planet 文件覆盖粘贴到C:\ProgramData\ZeroTier\One中 (这个目录是个隐藏目录，需要运允许查看隐藏目录才行)
+
+Win+S 搜索 服务
+
+![ui](img/002.jpg)
+
+找到 ZeroTier One，并且重启服务
+
+![ui](img/003.jpg)
+
+4.2 加入网络
+
+使用管理员身份打开 PowerShell
+
+执行如下命令，看到 join ok 字样就成功了
+```
+PS C:\Windows\system32> zerotier-cli.bat join 网络id(就是在网页里面创建的那个网络)
+200 join OK
+PS C:\Windows\system32>
+```
+登录管理后台可以看到有个个新的客户端，勾选 Authorized 就行
+
+![ui](img/004.jpg)
+
+执行如下命令：
+```
+PS C:\Windows\system32> zerotier-cli.bat peers
+200 peers
+<ztaddr>   <ver>  <role> <lat> <link> <lastTX> <lastRX> <path>
+fcbaeb9b6c 1.8.7  PLANET    52 DIRECT 16       8994     1.1.1.1/9993
+fe92971aad 1.8.7  LEAF      14 DIRECT -1       4150     2.2.2.2/9993
+PS C:\Windows\system32>
+```
+可以看到有一个 PLANTET 和 LEAF 角色，连接方式均为 DIRECT(直连)
+
+到这里就加入网络成功了
+
+4.2 Linux 客户端
+
+步骤如下：
+
+- 安装 linux 客户端软件
+- 进入目录 /var/lib/zerotier-one
+- 替换目录下的 planet 文件
+- 重启 zerotier-one 服务 (service zerotier-one restart)
+- 加入网络 zerotier-cli join 网络 id
+- 管理后台同意加入请求
+- zerotier-cli peers 可以看到 planet 角色
+
+4.3 安卓客户端配置
+
+[ZerotierFix](https://github.com/kaaass/ZerotierFix)
+
+[Zerotier 非官方安卓客户端发布：支持自建 Moon 节点 - V2EX](https://www.v2ex.com/t/768628)
