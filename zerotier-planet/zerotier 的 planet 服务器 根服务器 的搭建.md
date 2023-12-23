@@ -109,18 +109,18 @@ rpm -ivh ztncui-0.8.6-1.x86_64.rpm
 ```
 cd /opt/key-networks/ztncui/
  
-echo "HTTPS_PORT = 3443" >>./.env  #3443是ztncui默认的web面板端口，可以自行修改
-echo "ZT_TOKEN = authtoken.secret文件里的字符串" >>./.env  #这里的字符串是authtoken.secret文件里的字符串
-echo "ZT_ADDR=127.0.0.1:9993" >>./.env  #这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
+echo "HTTPS_PORT = 4000" >>./.env  # 3443是ztncui默认的web面板端口，可以自行修改
+echo "ZT_TOKEN = authtoken.secret文件里的字符串" >>./.env  # 这里的字符串是authtoken.secret文件里的字符串
+echo "ZT_ADDR=127.0.0.1:9993" >>./.env  # 这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
 echo "NODE_ENV = production" >>./.env
 echo "HTTP_ALL_INTERFACES=yes" >>./.env﻿​
 ```
 注：如使用FinalShell ssh工具 用ssh工具直接编辑/opt/key-networks/ztncui/.env文件，如没有创建它
 
 ```
-HTTPS_PORT = 4000                           #4000是ztncui默认的web面板端口，可以自行修改
-ZT_TOKEN = 0pjfz0tjgquobssck0qzobzc         #这里的字符串是authtoken.secret文件里的字符串
-ZT_ADDR=127.0.0.1:9993                      #这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
+HTTPS_PORT = 4000                           # 3443是ztncui默认的web面板端口，可以自行修改
+ZT_TOKEN = 0pjfz0tjgquobssck0qzobzc         # 这里的字符串是authtoken.secret文件里的字符串
+ZT_ADDR=127.0.0.1:9993                      # 这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
 NODE_ENV = production
 HTTP_ALL_INTERFACES=yes
 ```
