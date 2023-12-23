@@ -5,6 +5,7 @@ apt update
 （2）. 安装必要的编译组件
 ```
 apt install wget gcc gcc-c++ git -y
+apt install g++
 ```
 （3）. 安装官方客户端
 ```
