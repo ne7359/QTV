@@ -25,7 +25,7 @@ w8cl25tzb38dvwffenucrbug
 git clone https://github.com/zerotier/ZeroTierOne.git
 cd ./ZeroTierOne/attic/world/
 
-修改 mkworld.cpp 内容
+<1> 修改 mkworld.cpp 内容
 sed -i '/roots.push_back/d' ./mkworld.cpp                                                                      # 删除mkworld.cpp文件内的所有roots.push_back源代码
 sed -i '/roots.back()/d' ./mkworld.cpp                                                                         # 删除mkworld.cpp文件内的所有roots.back()源代码
 sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp                                                     # 重新添加roots.push_back(World::Root())mkworld.cpp
@@ -39,7 +39,7 @@ sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"服务器ip�
 	roots.back().identity = Identity("3a46f1bf30:0:76e66fab33e28549a62ee2064d1843273c2c300ba45c3f20bef02dbad225723bb59a9bb4b13535730961aeecf5a163ace477cceb0727025b99ac14a5166a09a3");
 	roots.back().stableEndpoints.push_back(InetAddress("185.180.13.82/9993"));      # 服务器ip地址/9993  默认通讯端口是9993，可以自行修改
 
-生成build & planet
+<2> 生成build & planet
 source ./build.sh
 ./mkworld
 mv ./world.bin ./planet
