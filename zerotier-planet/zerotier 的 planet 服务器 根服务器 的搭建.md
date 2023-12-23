@@ -37,7 +37,7 @@ sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"服务器ip�
 2.修改 // Los Angeles 下内容
 	// Los Angeles
 	roots.push_back(World::Root());
-	roots.back().identity = Identity("3a46f1bf30:0:76e66fab33e28549a62ee2064d1843273c2c300ba45c3f20bef02dbad225723bb59a9bb4b13535730961aeecf5a163ace477cceb0727025b99ac14a5166a09a3");
+	roots.back().identity = Identity("填写identity.public里的字符串");
 	roots.back().stableEndpoints.push_back(InetAddress("185.180.13.82/9993"));      # 服务器ip地址/9993  默认通讯端口是9993，可以自行修改
 
 <2> 生成build & planet
@@ -111,7 +111,7 @@ echo "ZT_TOKEN = authtoken.secret文件里的字符串" >>./.env  #这里的字�
 echo "ZT_ADDR=127.0.0.1:9993" >>./.env  #这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
 echo "NODE_ENV = production" >>./.env
 echo "HTTP_ALL_INTERFACES=yes" >>./.env﻿​
-
+```
 注：如使用FinalShell ssh工具 用ssh工具直接编辑/opt/key-networks/ztncui/.env文件，如没有创建它
 
 ```
