@@ -149,3 +149,5 @@ zerotier-cli join xxxxxxxxxx
 如果一切正常的话，会显示：200 join OK 的提示
 
 （12）在其他设备上执行 zerotier-cli listpeers 命令可以看到你架设成功的 planet 服务器，注意这里的 planet 服务器是不显示 ip 的。具体见下图
+
+![ui](asserts/ztncui.png)
