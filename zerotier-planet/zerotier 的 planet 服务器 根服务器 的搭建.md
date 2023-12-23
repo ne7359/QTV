@@ -50,6 +50,45 @@ mv ./world.bin ./planet
 ```
 systemctl restart zerotier-one.service
 ```
+（5）. 安装 moon 服务器
+
+（5-1）生成moon配置文件
+```
+cd /var/lib/zerotier-one
+zerotier-idtool initmoon identity.public > moon.json
+chmod 777 moon.json
+```
+（5-2）打开moon.json 修改stableEndpoints, 注意格式和实际公网ip"stableEndpoints": ["公网ip 4/9993"]
+```
+{
+ "id": "b72b5e9e1a",
+ "objtype": "world",
+ "roots": [
+  {
+   "identity": "b72b5e9e1a:0:a892e51d2ef94ef941e4c499af01fbc2903f7ad2fd53e9370f9ac6260c2f5d2484fd90756bec0c410675a81b7cf61d2bb885783bd6a8c28bce83bcab5f03fe14",
+   "stableEndpoints": ["127.0.0.1/9993"]
+  }
+ ],
+ "signingKey": "45f0613e569a0549c74293c39b30495b594a003534290e8ade9ef82877aa7505d7a73eeabfc22c97c404e4caaf9f3c9eed2b134d696935c966e28f523364f15f",
+ "signingKey_SECRET": "cc6afd67e7b7f84a92e2c8d3c2e7212c71e2ad0a4f5b3c03bf60ab1cd3b99281b57d9a2958d2bd8fc2bc77fdf2a1160099c2c61d3d9acc8cb311673ee120b4a6",
+ "updatesMustBeSignedBy": "45f0613e569a0549c74293c39b30495b594a003534290e8ade9ef82877aa7505d7a73eeabfc22c97c404e4caaf9f3c9eed2b134d696935c966e28f523364f15f",
+ "worldType": "moon"
+}
+```
+（5-3）生成moon文件
+```
+zerotier-idtool genmoon moon.json
+mkdir moons.d
+cp *.moon moons.d/
+```
+（5-4）将moon id写入root/moon使用说明.txt
+```
+moon_id=$(cat /var/lib/zerotier-one/identity.public | cut -d ':' -f1)
+```
+```
+echo -e "++++++++++++你的 ZeroTier moon id 是+++++++++++++\\n\\n                $moon_id\\n\\nWindows客户端加入moon服务器，在终端输入:\\n\\ncd C:\ProgramData\ZeroTier\One\\n\\n接着输入:\\n\\nzerotier-cli orbit $moon_id $moon_id\\n\\n\\n+++++++++++++检查是否加入moon服务器++++++++++++++\\n\\n在终端输入 如下命令:\\n\\nzerotier-cli listpeers\\n\\n\\n++++++++如果想把服务器控制器也加入节点中+++++++++\\n\\n在容器里加入Network ID就可以了，输入如下进入容器:\\n\\ndocker exec -it ztncui bash\\n\\nzerotier-cli join Network ID" > moon使用说明.txt
+```
+
 （6）. 安装 planet 服务器的管理系统 ztncui 
 
 ubuntu 使用下面代码
@@ -81,7 +120,7 @@ ZT_ADDR=127.0.0.1:9993                      #这里是面板与本地客户端�
 NODE_ENV = production
 HTTP_ALL_INTERFACES=yes
 ```
-（5-2）. 启动 ztncui 管理面板
+（6-2）. 启动 ztncui 管理面板
 ```
 systemctl restart ztncui
 ```
