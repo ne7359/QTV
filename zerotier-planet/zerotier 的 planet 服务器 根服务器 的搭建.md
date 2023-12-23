@@ -31,6 +31,7 @@ sed -i '/roots.back()/d' ./mkworld.cpp                                          
 sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp                                                     # 重新添加roots.push_back(World::Root())mkworld.cpp
 sed -i '86i roots.back().identity = Identity(\"'"填写identity.public里的字符串"'\");' ./mkworld.cpp             # 重新添加
 sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"服务器ip地址/通讯端口"'\"));' ./mkworld.cpp   #默认通讯端口是9993，可以自行修改
+
 注：如使用FinalShell ssh工具 用ssh工具直接编辑修改 1.删除 // Miami // Tokyo // Amsterdam 下的所有内容
 2.修改 // Los Angeles 下内容
 	// Los Angeles
@@ -49,8 +50,59 @@ mv ./world.bin ./planet
 ```
 systemctl restart zerotier-one.service
 ```
-（5）. 安装 planet 服务器的管理系统 ztncui ubunti使用下面代码
+（6）. 安装 planet 服务器的管理系统 ztncui 
+
+ubuntu 使用下面代码
 ```
 wget https://gitee.com/MINGERTAI/ztncui/releases/download/ztncui_0.8.7/ztncui_0.8.7_amd64.deb
 sudo dpkg -i ztncui_0.8.7_amd64.deb
 ```
+centos 使用下面代码
+```
+wget https://gitee.com/opopop880/ztncui/attach_files/932633/download/ztncui-0.8.6-1.x86_64.rpm
+rpm -ivh ztncui-0.8.6-1.x86_64.rpm
+```
+（6-1）. 生成接口文件
+```
+cd /opt/key-networks/ztncui/
+ 
+echo "HTTPS_PORT = 3443" >>./.env  #3443是ztncui默认的web面板端口，可以自行修改
+echo "ZT_TOKEN = authtoken.secret文件里的字符串" >>./.env  #这里的字符串是authtoken.secret文件里的字符串
+echo "ZT_ADDR=127.0.0.1:9993" >>./.env  #这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
+echo "NODE_ENV = production" >>./.env
+echo "HTTP_ALL_INTERFACES=yes" >>./.env﻿​
+
+注：如使用FinalShell ssh工具 用ssh工具直接编辑/opt/key-networks/ztncui/.env文件，如没有创建它
+
+```
+HTTPS_PORT = 4000                           #4000是ztncui默认的web面板端口，可以自行修改
+ZT_TOKEN = 0pjfz0tjgquobssck0qzobzc         #这里的字符串是authtoken.secret文件里的字符串
+ZT_ADDR=127.0.0.1:9993                      #这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
+NODE_ENV = production
+HTTP_ALL_INTERFACES=yes
+```
+（5-2）. 启动 ztncui 管理面板
+```
+systemctl restart ztncui
+```
+（7）. 现在可以使用：https://服务器 ip:4000 登录了，默认账号和密码是：admin/password
+
+备注：如果使用http://服务器 ip:3000【注意这里的证书是不可信的，所以要点浏览器页面上的高级 -- 继续前往服务器 ip（不安全）】第一次登录需要改密码，改完密码后在页面上点注销，然后用新密码登录。
+
+登录以后点：add a network 建立一个虚拟网路，network name: 名称随便写，最后按 create a network 按钮保存
+
+（7）. 记住 there are no members on this network - users are invited to join 后面的网络 id，后续方便虚拟局域网的其他电脑加入
+
+（8）. 下载 / root 目录下生成的 “planet” 文件，来替换需要组网客户端里的 “planet” 文件
+
+（9）. 其他需要加入虚拟局域网的电脑正常安装客户端，各系统的客户端下载地址：https://www.zerotier.com/download/
+
+（10）. 使用刚才下载的 “planet” 文件替换其他电脑 “ZeroTier-One” 安装目录下的 “planet” 文件，并重启系统
+
+（11）. 在设备上执行 “zerotier-cli join 你的 planet 服务器网络 ID” 加入刚组建虚拟局域网
+```
+zerotier-cli join xxxxxxxxxx
+```
+如果一切正常的话，会显示：200 join OK 的提示
+
+（12）在其他设备上执行 zerotier-cli listpeers 命令可以看到你架设成功的 planet 服务器，注意这里的 planet 服务器是不显示 ip 的。具体见下图
