@@ -60,7 +60,7 @@ sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp                      
 sed -i '86i roots.back().identity = Identity(\"'"填写identity.public里的字符串"'\");' ./mkworld.cpp             # 在86行重新添加
 sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"服务器ip地址/通讯端口"'\"));' ./mkworld.cpp   # 在8７行默认通讯端口是9993，可以自行修改
 ```
-注：如使用FinalShell ssh工具 用ssh工具直接编辑修改 1.删除 // Miami // Tokyo // Amsterdam 下的所有内容
+注：如使用FinalShell ssh工具 用ssh工具直接编辑修改  删除 // Miami // Tokyo // Amsterdam 下的所有内容
 
 修改 // Los Angeles 下内容
 ```
