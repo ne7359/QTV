@@ -47,7 +47,7 @@ docker container ps -a # 查看容器
 docker exec -it ztncui bash # 进入容器
 # 在容器内操作
 cd /var/lib/zerotier-one
-ls -l
+ls -l  # 查看zerotier-idtool所在位置
 # 生成moon配置文件
 zerotier-idtool initmoon identity.public > moon.json
 chmod 777 moon.json
@@ -55,8 +55,25 @@ chmod 777 moon.json
 按 Ctrl + q 退出docker容器 or 输入 exit 退出docker容器
 ```
 docker cp ztncui:/var/lib/zerotier-one/moon.json /root/
-
 ---
+在root下打开编辑moon.json文件修改  修改stableEndpoints, 注意格式和实际公网ip
+```
+{
+ "id": "45641b5d33",
+ "objtype": "world",
+ "roots": [
+  {
+   "identity": "13241b5d33:0:e50a3fab865372a34ab9b459ce246858d94dc0a7030fa02374a083068be55f083e9e964dee71d624cfec5bfdadae0aaee311dc63592cc91a8de5e8f744954e5f",
+   "stableEndpoints": ["公网ip地址/9993"]
+  }
+ ],
+ "signingKey": "ebec873da46fd9a81e69013d3c576ea9f916a0a604d88e654dcdbb6a211daa49ce2f836527444fecc8d4d87f53790b706a5d371b0531c0b2afebd78c19dd6014",
+ "signingKey_SECRET": "e3fb79d6d282c9fd1c289085a9956b4beaf6632bda10d44ded75e10dcffdfe897cfec22c1060b156a385592ad9897b2c1164666cd74d3e6e2ac6fbbcab462aaf",
+ "updatesMustBeSignedBy": "ebec873da46fd9a81e69013d3c576ea9f916a0a604d88e654dcdbb6a211daa49ce2f836527444fecc8d4d87f53790b706a5d371b0531c0b2afebd78c19dd6014",
+ "worldType": "moon"
+}
+```
+
 
 # 用法 注：此用法不能独立于官方，所产生的planet也不是自己服务器ip
 
