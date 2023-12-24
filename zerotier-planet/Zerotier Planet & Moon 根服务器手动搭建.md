@@ -22,7 +22,7 @@ identity.public内代码用于替换 roots.back().identity = Identity("填写ide
 ```
 2dcdb49f24:0:2e39cb1b36c96bea35a4ae506e15bad97019c48880e66fe9310453977dd9ce7981987bdb94e1e8eb4cd14d09d27aeeaf1c9658bb98b1bc7107a7e3d427d5bdc2
 ```
-authtoken.secret： 用于/opt/key-networks/ztncui/.env authtoken.secret里的是
+authtoken.secret： 用于/opt/key-networks/ztncui/.env authtoken.secret 我这里的是，这个可以不用记录用 cat 命令呼出
 ```
 w8cl25tzb38dvwffenucrbug
 ```
@@ -119,22 +119,34 @@ wget https://gitee.com/opopop880/ztncui/attach_files/932633/download/ztncui-0.8.
 rpm -ivh ztncui-0.8.6-1.x86_64.rpm
 ```
 （6-1）. 生成接口文件
+
+方法 <一>
+```
+sudo sh -c "echo ZT_TOKEN=`sudo cat /var/lib/zerotier-one/authtoken.secret` > /opt/key-networks/ztncui/.env"
+sudo sh -c "echo HTTPS_PORT=4000 >> /opt/key-networks/ztncui/.env"
+sudo sh -c "echo ZT_ADDR=127.0.0.1:9993 >> /opt/key-networks/ztncui/.env"
+sudo sh -c "echo NODE_ENV=production >> /opt/key-networks/ztncui/.env"
+sudo sh -c "HTTP_ALL_INTERFACES=yes >> /opt/key-networks/ztncui/.env"
+sudo chmod 400 /opt/key-networks/ztncui/.env
+sudo chown ztncui.ztncui /opt/key-networks/ztncui/.env
+```
+方法 <二>
 ```
 cd /opt/key-networks/ztncui/
  
-echo "HTTPS_PORT = 4000" >>./.env  # 3443是ztncui默认的web面板端口，可以自行修改
-echo "ZT_TOKEN = authtoken.secret文件里的字符串" >>./.env  # 这里的字符串是authtoken.secret文件里的字符串
+echo "HTTPS_PORT=4000" >>./.env  # 3443是ztncui默认的web面板端口，可以自行修改
+echo "ZT_TOKEN=authtoken.secret文件里的字符串" >>./.env  # 这里的字符串是authtoken.secret文件里的字符串
 echo "ZT_ADDR=127.0.0.1:9993" >>./.env  # 这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
-echo "NODE_ENV = production" >>./.env
+echo "NODE_ENV=production" >>./.env
 echo "HTTP_ALL_INTERFACES=yes" >>./.env﻿​
 ```
-注：如使用FinalShell ssh工具 用ssh工具直接编辑/opt/key-networks/ztncui/.env文件，如没有创建它
+方法 <三> 注：如使用FinalShell ssh工具 用ssh工具直接编辑/opt/key-networks/ztncui/.env文件，如没有创建它
 
 ```
-HTTPS_PORT = 4000                           # 3443是ztncui默认的web面板端口，可以自行修改
-ZT_TOKEN = 0pjfz0tjgquobssck0qzobzc         # 这里的字符串是authtoken.secret文件里的字符串
+HTTPS_PORT=4000                             # 3443是ztncui默认的web面板端口，可以自行修改
+ZT_TOKEN=0pjfz0tjgquobssck0qzobzc           # 这里的字符串是authtoken.secret文件里的字符串
 ZT_ADDR=127.0.0.1:9993                      # 这里是面板与本地客户端的通讯端口，保持默认9993就行，千万别修改，修改了本地ztncui和ZeroTier-One通讯就会错误
-NODE_ENV = production
+NODE_ENV=production
 HTTP_ALL_INTERFACES=yes
 ```
 （6-2）. 启动 ztncui 管理面板
