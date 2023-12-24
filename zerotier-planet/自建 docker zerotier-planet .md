@@ -78,6 +78,8 @@ cp -r ./planet /root/﻿​       # 保存 planet 文件，用于客户端
 docker cp -r /root/planet ﻿​ztncui:/var/lib/zerotier-one/  # 把生成的planet拷贝到docker容器，替换原来的planet文件
 ```
 
+---
+
 # 生成moon配置文件在容器内操作 or 使用下面的方法二来创建 moon
 
 进入docker容器
