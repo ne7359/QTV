@@ -153,17 +153,12 @@ zerotier-cli listmoons
 
 ---
 
-# 用法 注：此用法不能独立于官方，所产生的planet也不是自己服务器ip
+# 用法 二
 
 ```
-git clone https://github.com/Jonnyan404/zerotier-planet
-OR
-git clone https://gitee.com/Jonnyan404/zerotier-planet
-
 cd zerotier-planet
 docker-compose up -d
-# 以下步骤为创建planet和moon
-docker cp mkmoonworld-x86_64 ztncui:/tmp
+# 以下步骤为创建 moon
 docker cp patch.sh ztncui:/tmp
 docker exec -it ztncui bash /tmp/patch.sh
 docker restart ztncui
