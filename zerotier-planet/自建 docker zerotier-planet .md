@@ -45,9 +45,9 @@ docker container ps -a # 查看容器
 ```
 git clone https://github.com/zerotier/ZeroTierOne.git
 ```
-从容器中拷贝identity.public文件，打开复制文件代码
+从容器中拷贝identity.public文件到root下，打开复制文件代码
 ```
-docker cp ztncui:/var/lib/zerotier-one/identity.public
+docker cp ztncui:/var/lib/zerotier-one/identity.public /root/
 ```
 修改 mkworld.cpp 内容，破解成真正的planet服务器，并使用你真正的服务器上的公网ip
 ```
