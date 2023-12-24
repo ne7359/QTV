@@ -1,4 +1,4 @@
-# Zerotier planet 根服务器 手动搭建
+# Zerotier planet & MOON 根服务器 手动搭建
 
 （1）. 首先更新系统
 ```
