@@ -77,7 +77,11 @@ docker cp ztncui:/var/lib/zerotier-one/moon.json /root/
 ```
 docker cp root/moon.json ztncui:/var/lib/zerotier-one/
 ```
-下载并编译配置文件
+
+---
+
+## 下载并编译配置文件 破解成真正的planet服务器，并使用你真正的服务器上的公网ip
+
 ```
 git clone https://github.com/zerotier/ZeroTierOne.git
 cd ./ZeroTierOne/attic/world/
@@ -110,6 +114,9 @@ source ./build.sh
 mv ./world.bin ./planet
 cp -r ./planet /root/﻿​       # 保存 planet 文件，用于客户端
 docker cp -r /root/planet ﻿​ztncui:/var/lib/zerotier-one/  # 把生成的planet拷贝到docker容器，替换原来的planet文件
+```
+
+
 ---
 
 # 用法 注：此用法不能独立于官方，所产生的planet也不是自己服务器ip
@@ -127,34 +134,3 @@ docker cp patch.sh ztncui:/tmp
 docker exec -it ztncui bash /tmp/patch.sh
 docker restart ztncui
 ```
-
-然后浏览器访问 `http://ip:4000` 打开web控制台界面。
-
-浏览器访问 `http://ip:3180` 打开planet和moon文件下载页面（亦可在项目根目录的`./ztncui/etc/myfs/`里获取）。
-
-
-- 用户名:admin
-- 密码:mrdoc.fun
-
-# 各客户端配置planet
-
-限于篇幅，请到 <https://www.mrdoc.fun/doc/443/> 查阅
-
-
-# 关联云服务器(带公网IP)
-
-[【腾讯云】云产品限时秒杀，爆款2核4G云服务器，首年74元](https://curl.qcloud.com/S2Db7PLK)
-
-
-### 私有 zerotier-planet 的优势:
-- 解除官方 25 的设备连接数限制
-- 提升手机客户端连接的稳定性
-
-# 同类型项目推荐
-
-https://github.com/xubiaolin/docker-zerotier-planet
-
-# Reference Link
-
-- <https://www.mrdoc.fun/doc/443/>
-- <https://github.com/key-networks/ztncui-aio>
