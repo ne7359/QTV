@@ -14,19 +14,47 @@
 
 # 用法
 
+在要搭建的服务器 root 下创建 docker-compose.yml 空白文件，编辑docker-compose.yml文件，复制下面代码，粘贴到docker-compose.yml文件保存
 ```
-git clone https://github.com/Jonnyan404/zerotier-planet
-OR
-git clone https://gitee.com/Jonnyan404/zerotier-planet
-
-cd zerotier-planet
+version: '2.0'
+services:
+    ztncui:
+        container_name: ztncui
+        restart: always
+        environment:
+            - MYADDR=1.1.1.1 #改成自己的服务器公网IP
+            - HTTP_PORT=4000
+            - HTTP_ALL_INTERFACES=yes
+            - ZTNCUI_PASSWD=admin
+        ports:
+            - '4000:4000' # web控制台入口
+            - '9993:9993'
+            - '9993:9993/udp'
+            - '3180:3180' # planet/moon文件在线下载入口，如不对外提供。可防火墙禁用此端口。
+        volumes:
+            - './zerotier-one:/var/lib/zerotier-one'
+            - './ztncui/etc:/opt/key-networks/ztncui/etc'
+            # 按实际路径挂载卷， 冒号前面是宿主机的， 支持相对路径
+        image: keynetworks/ztncui
+```
+运行
+```
 docker-compose up -d
-# 以下步骤为创建planet和moon
-docker cp patch.sh ztncui:/tmp
-docker exec -it ztncui bash
-进入docker后安照手动创建moon方法创建
-docker restart ztncui
+
+docker images #　查看镜像
+docker container ps -a # 查看容器
+
+docker exec -it ztncui bash # 进入容器
+# 在容器内操作
+cd /var/lib/zerotier-one
+ls -l
+# 生成moon配置文件
+zerotier-idtool initmoon identity.public > moon.json
+chmod 777 moon.json
 ```
+按 Ctrl + q 退出docker容器 or 输入 exit 退出docker容器
+```
+docker cp ztncui:/var/lib/zerotier-one/moon.json /root/
 
 ---
 
