@@ -123,8 +123,11 @@ docker cp root/moon.json ztncui:/var/lib/zerotier-one/
 zerotier-idtool genmoon moon.json
 mkdir moons.d
 cp *.moon moons.d/
+cp *.moon planet  /opt/key-networks/ztncui/etc/myfs
+moon_id=$(cat /var/lib/zerotier-one/identity.public | cut -d ':' -f1)
+echo -e "++++++++++++你的 ZeroTier moon id 是+++++++++++++\\n\\n                $moon_id\\n\\nWindows客户端加入moon服务器，在终端输入:\\n\\ncd C:\ProgramData\ZeroTier\One\\n\\n接着输入:\\n\\nzerotier-cli orbit $moon_id $moon_id\\n\\n\\n+++++++++++++检查是否加入moon服务器++++++++++++++\\n\\n在终端输入 如下命令:\\n\\nzerotier-cli listpeers\\n\\n\\n++++++++如果想把服务器控制器也加入节点中+++++++++\\n\\n在容器里加入Network ID就可以了，输入如下进入容器:\\n\\ndocker exec -it ztncui bash\\n\\nzerotier-cli join Network ID" > moon使用说明.txt
 ```
-从容器中拷贝moon文件到宿主机root下
+从容器中拷贝moon文件到宿主机root下 备用
 ```
 docker cp ztncui:/var/lib/zerotier-one/*.moon /root/
 ```
@@ -141,6 +144,10 @@ zerotier-cli listmoons
 访问ip+端口对应的设置页面
 
 替换客户端的planet文件并重启服务， 再加入网络， 在网页端授权
+
+## 用户名:admin
+
+## 密码:admin
 
 ---
 
