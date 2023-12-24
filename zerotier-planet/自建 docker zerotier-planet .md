@@ -55,11 +55,11 @@ chmod 777 moon.json
 按 Ctrl + q 退出docker容器 or 输入 exit 退出docker容器
 ```
 docker cp ztncui:/var/lib/zerotier-one/moon.json /root/
----
+```
 在root下打开编辑moon.json文件修改  修改stableEndpoints, 注意格式和实际公网ip
 ```
 {
- "id": "45641b5d33",
+ "id": "45641b5d33",   # 注 45641b5d33 就是moon id
  "objtype": "world",
  "roots": [
   {
@@ -73,7 +73,44 @@ docker cp ztncui:/var/lib/zerotier-one/moon.json /root/
  "worldType": "moon"
 }
 ```
+把修改好的moon.json拷贝回docker容器中
+```
+docker cp root/moon.json ztncui:/var/lib/zerotier-one/
+```
+下载并编译配置文件
+```
+git clone https://github.com/zerotier/ZeroTierOne.git
+cd ./ZeroTierOne/attic/world/
+```
+从容器中拷贝identity.public文件，打开复制文件代码
+```
+docker cp ztncui:/var/lib/zerotier-one/identity.public
+```
+修改 mkworld.cpp 内容，破解成真正的planet服务器，并使用你真正的服务器上的公网ip
+```
+sed -i '/roots.push_back/d' ./mkworld.cpp                                                                      # 删除mkworld.cpp文件内的所有roots.push_back源代码
+sed -i '/roots.back()/d' ./mkworld.cpp                                                                         # 删除mkworld.cpp文件内的所有roots.back()源代码
+sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp                                                     # 在85行重新添加roots.push_back(World::Root())mkworld.cpp
+sed -i '86i roots.back().identity = Identity(\"'"填写identity.public里的字符串"'\");' ./mkworld.cpp             # 在86行重新添加
+sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"服务器ip地址/通讯端口"'\"));' ./mkworld.cpp   # 在8７行默认通讯端口是9993，可以自行修改
+```
+注：如使用FinalShell ssh工具 用ssh工具直接编辑修改 1.删除 // Miami // Tokyo // Amsterdam 下的所有内容
 
+修改 // Los Angeles 下内容
+```
+	// Los Angeles
+	roots.push_back(World::Root());
+	roots.back().identity = Identity("填写identity.public里的字符串");
+	roots.back().stableEndpoints.push_back(InetAddress("185.180.13.82/9993"));      # 服务器ip地址/9993  默认通讯端口是9993，可以自行修改
+```
+build & 生成 planet 文件
+```
+source ./build.sh
+./mkworld
+mv ./world.bin ./planet
+cp -r ./planet /root/﻿​       # 保存 planet 文件，用于客户端
+docker cp -r /root/planet ﻿​ztncui:/var/lib/zerotier-one/  # 把生成的planet拷贝到docker容器，替换原来的planet文件
+---
 
 # 用法 注：此用法不能独立于官方，所产生的planet也不是自己服务器ip
 
