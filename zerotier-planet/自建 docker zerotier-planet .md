@@ -78,7 +78,7 @@ cp -r ./planet /root/﻿​       # 保存 planet 文件，用于客户端
 docker cp -r /root/planet ﻿​ztncui:/var/lib/zerotier-one/  # 把生成的planet拷贝到docker容器，替换原来的planet文件
 ```
 
-## 在容器内操作
+## 生成moon配置文件在容器内操作 or 使用下面的方法二来创建 moon
 
 进入docker容器
 ```
@@ -155,10 +155,29 @@ zerotier-cli listmoons
 
 # 用法 二
 
+## 在宿主机下创建名为patch.sh，打开并编辑，复制下面内容粘贴到创建名为patch.sh的文件内保存
 ```
-cd zerotier-planet
-docker-compose up -d
-# 以下步骤为创建 moon
+#!/bin/sh
+set -x
+zerotier-idtool initmoon /var/lib/zerotier-one/identity.public > moon.json
+chmod 777 moon.json
+moonip="[\"${MYADDR}/9993\"]"
+sed -i "s#127.0.0.1#${MYADDR}#g" moon.json
+sed -i "s#\[\]#${moonip}#g" moon.json
+cat moon.json
+zerotier-idtool genmoon moon.json
+
+mkdir /var/lib/zerotier-one/moons.d
+cp *.moon /var/lib/zerotier-one/moons.d
+cp -f planet /var/lib/zerotier-one/planet
+
+cp *.moon planet  /opt/key-networks/ztncui/etc/myfs
+moon_id=$(cat /var/lib/zerotier-one/identity.public | cut -d ':' -f1)
+echo -e "Your ZeroTier moon id is \033[0;31m$moon_id\033[0m, you could orbit moon using \033[0;31m\"zerotier-cli orbit $moon_id $moon_id\"\033[0m"
+echo -e "++++++++++++你的 ZeroTier moon id 是+++++++++++++\\n\\n                $moon_id\\n\\nWindows客户端加入moon服务器，在终端输入:\\n\\ncd C:\ProgramData\ZeroTier\One\\n\\n接着输入:\\n\\nzerotier-cli orbit $moon_id $moon_id\\n\\n\\n+++++++++++++检查是否加入moon服务器++++++++++++++\\n\\n在终端输入 如下命令:\\n\\nzerotier-cli listpeers\\n\\n\\n++++++++如果想把服务器控制器也加入节点中+++++++++\\n\\n在容器里加入Network ID就可以了，输入如下进入容器:\\n\\ndocker exec -it ztncui bash\\n\\nzerotier-cli join Network ID" > /opt/key-networks/ztncui/etc/myfs/moon使用说明.txt
+```
+##  以下步骤为创建 moon
+```
 docker cp patch.sh ztncui:/tmp
 docker exec -it ztncui bash /tmp/patch.sh
 docker restart ztncui
