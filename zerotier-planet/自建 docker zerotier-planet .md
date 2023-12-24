@@ -153,7 +153,7 @@ zerotier-cli listmoons
 
 ---
 
-# 用法 二
+# 创建 moon 用法 二
 
 ### 在宿主机下创建名为patch.sh，打开并编辑，复制下面内容粘贴到创建名为patch.sh的文件内保存
 ```
