@@ -1,4 +1,4 @@
-# zerotier planet 根服务器 手动搭建
+# Zerotier planet 根服务器 手动搭建
 
 （1）. 首先更新系统
 ```
