@@ -1,4 +1,4 @@
-# 自建zerotier-planet
+# 自建docker zerotier-planet
 
 # 必要条件
 
