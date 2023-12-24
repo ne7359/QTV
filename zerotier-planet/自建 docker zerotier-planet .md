@@ -120,6 +120,8 @@ docker cp root/moon.json ztncui:/var/lib/zerotier-one/
 ```
 在容器内生成moon文件
 ```
+docker exec -it ztncui bash
+cd /var/lib/zerotier-one/
 zerotier-idtool genmoon moon.json
 mkdir moons.d
 cp *.moon moons.d/
