@@ -148,7 +148,6 @@ sed -i "s|) Submit|) 提交|g" ztncui/src/views/dns.pug
 sed -i "s|) Cancel|) 取消|g" ztncui/src/views/dns.pug
 
 sed -i "s|network controller UI|网络控制器用户界面|g" ztncui/src/views/front_door.pug
-
 sed -i "s|Logout|注销|g" ztncui/src/views/head_layout.pug
 sed -i "13,14d" ztncui/src/views/index.pug
 sed -i "s|This network controller has a ZeroTier address of|该控制器的ZeroTier地址为|g" ztncui/src/views/index.pug
