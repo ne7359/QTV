@@ -45,7 +45,7 @@ docker container ps -a # 查看容器
 ```
 git clone https://github.com/zerotier/ZeroTierOne.git
 ```
-从容器中拷贝identity.public文件到root下，打开复制文件代码
+从容器中拷贝identity.public文件到到宿主机root下，打开复制文件代码
 ```
 docker cp ztncui:/var/lib/zerotier-one/identity.public /root/
 ```
@@ -92,6 +92,8 @@ zerotier-idtool initmoon identity.public > moon.json
 chmod 777 moon.json
 ```
 按 Ctrl + q 退出docker容器 or 输入 exit 退出docker容器
+
+拷贝moon.json到宿主机, 修改stableEndpoints
 ```
 docker cp ztncui:/var/lib/zerotier-one/moon.json /root/
 ```
@@ -121,6 +123,10 @@ docker cp root/moon.json ztncui:/var/lib/zerotier-one/
 zerotier-idtool genmoon moon.json
 mkdir moons.d
 cp *.moon moons.d/
+```
+从容器中拷贝moon文件到宿主机root下
+```
+docker cp ztncui:/var/lib/zerotier-one/*.moon /root/
 ```
 ## 重启容器
 
