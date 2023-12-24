@@ -1,4 +1,4 @@
-## zerotier 的 planet 服务器 根服务器 的搭建
+# zerotier 的 planet 服务器 根服务器 的搭建
 
 （1）. 首先更新系统
 ```
