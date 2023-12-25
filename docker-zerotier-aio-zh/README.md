@@ -7,6 +7,7 @@
 
 - [Github](https://github.com/niliovo/zerotier-aio-zh)
 - [Docker Hub](https://hub.docker.com/r/niliaerith/zerotier-aio-zh)
+- [Docker 最常用的镜像命令和容器命令](https://zhuanlan.zhihu.com/p/196754771)
 
 # 本项目基于下列项目,汉化 ztncui-aio 并打包镜像
 
