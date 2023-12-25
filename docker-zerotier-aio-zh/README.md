@@ -174,7 +174,6 @@ zerotier-idtool genmoon moon.json
 
 mkdir /var/lib/zerotier-one/moons.d
 cp *.moon /var/lib/zerotier-one/moons.d
-cp -f planet /var/lib/zerotier-one/planet
 
 cp *.moon /etc/zt-mkworld
 cp *.moon /opt/key-networks/ztncui/etc/httpfs
