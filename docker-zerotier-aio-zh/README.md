@@ -82,6 +82,8 @@ services:
 
 创建 docker-compose.yml 修改权限为777 然后输入 docker-compose up -d 运行zerotier 查看当前正常运行的容器：docker ps
 ```compose.yml
+version: '2.0'
+services:
   zerotier-aio:
     image: zerotier-aio:latest
     container_name: zerotier
