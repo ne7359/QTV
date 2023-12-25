@@ -163,7 +163,7 @@ services:
 ###  以下步骤为手动创建 planet 文件，做到真正意义上自建 zerotier planet器 使用官方方式生成行星文件
 
 ```
-wget https://github.com/MINGERTAI/QTV/blob/main/docker-zerotier-aio-zh/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
+wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
 ```
 呼出identity.public里的字符串 注：如 docker 挂载到宿主机用下面命令，如没挂载到宿主机那只能进入 docker 容器 cat /var/lib/zerotier-one/identity.public
 ```
