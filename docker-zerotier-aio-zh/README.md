@@ -2,9 +2,6 @@
 
 **注意，本仓库为汉化仓库，提交ISSUE请前往[原仓库](https://github.com/kmahyyg/ztncui-aio)**
 
-- [中文](./README.md)
-- [ENGLISH](./README_EN.md)
-
 - [Github](https://github.com/niliovo/zerotier-aio-zh)
 - [Docker Hub](https://hub.docker.com/r/niliaerith/zerotier-aio-zh)
 - [Docker 最常用的镜像命令和容器命令](https://zhuanlan.zhihu.com/p/196754771)
@@ -159,10 +156,11 @@ services:
 - `MYADDR` 公网IP地址，如果未设置将自动检测
 
 - 更多用法详见[kmahyyg/ztncui-aio](https://github.com/kmahyyg/ztncui-aio)
+- 要重置ztncui的密码：删除下面的文件/mydata/ztncui/passwd并将环境变量设置为您想要的密码，然后重新创建容器。应用程序初始化后，只能从网页更改密码。
 
 ---
 
-###  以下步骤为手动创建 planet 文件，做到真正意义上自建 zerotier planet器
+###  以下步骤为手动创建 planet 文件，做到真正意义上自建 zerotier planet器 使用官方方式生成行星文件
 
 ```
 wget https://github.com/MINGERTAI/QTV/blob/main/docker-zerotier-aio-zh/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
