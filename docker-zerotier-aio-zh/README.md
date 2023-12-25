@@ -18,7 +18,7 @@
 
 - 自行构建，在宿主机创建dockerfile/Dockerfile dockerfile/RUNNER.sh dockerfile/ZTNCUI.sh 然后即行命令如下)
 
-```
+```sh
 docker build -t zerotier-aio-zh .
 ```
 
@@ -181,7 +181,7 @@ cat /home/zerotier-aio/var/lib/zerotier-one/identity.public
 	roots.back().stableEndpoints.push_back(InetAddress("185.180.13.82/9993"));      # 服务器ip地址/9993  默认通讯端口是9993，可以自行修改
 ```
 生成build & planet
-```
+```js
 source ./build.sh
 ./mkworld
 mv ./world.bin ./planet
@@ -195,7 +195,7 @@ cp -r ./planet /home/zerotier-aio/etc/zt-mkworld                              # 
 # 创建 moon
 
 ### 在宿主机下创建名为patch.sh，打开并编辑，复制下面内容粘贴到创建名为patch.sh的文件内保存
-```
+```sh
 #!/bin/sh
 set -x
 zerotier-idtool initmoon /var/lib/zerotier-one/identity.public > moon.json
