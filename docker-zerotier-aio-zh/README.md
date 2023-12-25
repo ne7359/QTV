@@ -16,10 +16,10 @@
 
 ## Docker-Cli使用指南
 
-- armv7(armv7构建耗时超过6h导致GitHub Action无法完成构建镜像，请自行构建，命令如下)
+- 自行构建，在宿主机创建dockerfile/Dockerfile dockerfile/RUNNER.sh dockerfile/ZTNCUI.sh 然后即行命令如下)
 
 ```
-git clone https://github.com/niliovo/zerotier-aio-zh.git && cd zerotier-aio-zh/dockerfile && docker build -t zerotier-aio-zh .
+docker build -t zerotier-aio-zh .
 ```
 
 - amd64/arm64
