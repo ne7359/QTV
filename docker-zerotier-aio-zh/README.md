@@ -160,7 +160,7 @@ services:
 
 ---
 
-###  以下步骤为创建 planet 文件，做到真正意义上自建 zerotier planet器
+###  以下步骤为手动创建 planet 文件，做到真正意义上自建 zerotier planet器
 
 ```
 wget https://github.com/MINGERTAI/QTV/blob/main/docker-zerotier-aio-zh/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
