@@ -29,14 +29,14 @@ git clone https://github.com/niliovo/zerotier-aio-zh.git && cd zerotier-aio-zh/d
 - host模式
 
 ```sh
-docker run -itd --name zerotier --hostname zerotier --net host --restart always --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun -v /home/zerotier-aio/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc -v /home/zerotier-aio/var/lib/zerotier-one:/var/lib/zerotier-one -v /home/zerotier-aio/etc/zt-mkworld:/etc/zt-mkworld -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai -e AUTOGEN_PLANET=0 -e NODE_ENV=production -e HTTPS_HOST=127.0.0.1 -e HTTPS_PORT=3443 -e HTTP_PORT=3000 -e HTTP_ALL_INTERFACES=yes -e MYDOMAIN=你的域名 -e ZTNCUI_PASSWD=你的密码 -e MYADDR=你的公网ip --privileged=true zerotier-aio:latest
+docker run -itd --name zerotier --hostname zerotier --net host --restart always --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun -v /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc -v /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one -v /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai -e AUTOGEN_PLANET=0 -e NODE_ENV=production -e HTTPS_HOST=127.0.0.1 -e HTTPS_PORT=3443 -e HTTP_PORT=3000 -e HTTP_ALL_INTERFACES=yes -e MYDOMAIN=你的域名 -e ZTNCUI_PASSWD=你的密码 -e MYADDR=你的公网ip --privileged=true zerotier-aio:latest
 
 ```
 
 - bridge模式
 
 ```sh
-docker run -itd --name zerotier --hostname zerotier --net bridge -p3000:3000 -p3180:3180 -p3443:3443 -p9993:9993/udp --restart always --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun -v /home/zerotier-aio/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc -v /home/zerotier-aio/var/lib/zerotier-one:/var/lib/zerotier-one -v /home/zerotier-aio/etc/zt-mkworld:/etc/zt-mkworld -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai -e AUTOGEN_PLANET=0 -e NODE_ENV=production -e HTTPS_HOST=127.0.0.1 -e HTTPS_PORT=3443 -e HTTP_PORT=3000 -e HTTP_ALL_INTERFACES=yes -e MYDOMAIN=你的域名 -e ZTNCUI_PASSWD=你的密码 -e MYADDR=你的公网ip --privileged=true zerotier-aio:latest
+docker run -itd --name zerotier --hostname zerotier --net bridge -p3000:3000 -p3180:3180 -p3443:3443 -p9993:9993/udp --restart always --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun -v /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc -v /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one -v /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai -e AUTOGEN_PLANET=0 -e NODE_ENV=production -e HTTPS_HOST=127.0.0.1 -e HTTPS_PORT=3443 -e HTTP_PORT=3000 -e HTTP_ALL_INTERFACES=yes -e MYDOMAIN=你的域名 -e ZTNCUI_PASSWD=你的密码 -e MYADDR=你的公网ip --privileged=true zerotier-aio:latest
 ```
 
 ## Docker Compose使用指南
@@ -57,16 +57,16 @@ docker run -itd --name zerotier --hostname zerotier --net bridge -p3000:3000 -p3
       - /dev/net/tun
     network_mode: host
     volumes:
-      - /home/zerotier-aio/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
-      - /home/zerotier-aio/var/lib/zerotier-one:/var/lib/zerotier-one
-      - /home/zerotier-aio/etc/zt-mkworld:/etc/zt-mkworld
+      - /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
+      - /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one
+      - /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld
     environment:
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
       - AUTOGEN_PLANET=0
       - NODE_ENV=production
-      - HTTPS_HOST=xxx.xxx.xxx.xxx  输入你的宿主机ip地址
+      - HTTPS_HOST=127.0.0.1  输入你的宿主机ip地址
       - HTTPS_PORT=3443
       - HTTP_PORT=3000
       - HTTP_ALL_INTERFACES=yes
