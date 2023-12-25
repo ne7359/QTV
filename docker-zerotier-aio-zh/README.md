@@ -113,12 +113,14 @@ services:
       - HTTPS_PORT=3443
       - HTTP_PORT=3000
       - HTTP_ALL_INTERFACES=yes
-      - MYDOMAIN=ztncui.docker.test
+      - MYDOMAIN=ztncui.docker.test 注：输入你用于WebUI网址域名，动态生成 TLS 证书（如果不存在）
       - ZTNCUI_PASSWD=你的密码  注：网页控制器密码，用户名默认为admin
       - MYADDR=你的公网ip地址  注：安装zerotier宿主机 ip地址
     privileged: true
 ```
+### Golang auto-mkworld（已嵌入 docker 镜像中）
 
+此功能允许您在不使用 C 代码和编译器的情况下生成行星文件。
 ## 变量
 
 - `AUTOGEN_PLANET=0`如果设置为 1，将使用此节点身份生成planet文件并放入httpfs文件夹以在外部提供服务。如果设置为 2，将使用`/etc/zt-mkworld/mkworld.config.json`. 如果设置为 0，则不执行任何操作(默认为0)。
