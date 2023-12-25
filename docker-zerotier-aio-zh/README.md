@@ -158,6 +158,40 @@ services:
 
 - 更多用法详见[kmahyyg/ztncui-aio](https://github.com/kmahyyg/ztncui-aio)
 
+---
+
+###  以下步骤为创建 planet 文件，做到真正意义上自建 zerotier planet器
+
+```
+wget https://github.com/MINGERTAI/QTV/blob/main/docker-zerotier-aio-zh/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
+```
+呼出identity.public里的字符串 注：如 docker 挂载到宿主机用下面命令，如没挂载到宿主机那只能进入 docker 容器 cat /var/lib/zerotier-one/identity.public
+```
+cat /home/zerotier-aio/var/lib/zerotier-one/identity.public
+```
+呼出内容如下，复制root@ubuntuserver2204:~#前所有代码，去粘贴到 mkworld.cpp 修改 roots.back().identity = Identity("填写identity.public里的字符串");
+```
+0e7985bc80:0:d694f506c5c4810cd4ceb76e3000b5793219a4ec3f6259ebde3770d715152a6f642329195f58086a6d209d8ae413fb19fa120194b1095d018b4d722536aaefb6root@ubuntuserver2204:~#
+```
+打开 mkworld.cpp 修改
+```
+	// Los Angeles
+	roots.push_back(World::Root());
+	roots.back().identity = Identity("填写identity.public里的字符串");
+	roots.back().stableEndpoints.push_back(InetAddress("185.180.13.82/9993"));      # 服务器ip地址/9993  默认通讯端口是9993，可以自行修改
+```
+生成build & planet
+```
+source ./build.sh
+./mkworld
+mv ./world.bin ./planet
+cp -r ./planet /home/zerotier-aio/var/lib/zerotier-one/                       # 替换原planet使成为真正的独立于zerotier官方服务器的 Zerotier Planet服务器
+cp -r ./planet /home/zerotier-aio/opt/key-networks/ztncui/etc/httpfs/         # 供网页端下载
+cp -r ./planet /home/zerotier-aio/etc/zt-mkworld                              # 备份保存
+```
+
+---
+
 # 创建 moon
 
 ### 在宿主机下创建名为patch.sh，打开并编辑，复制下面内容粘贴到创建名为patch.sh的文件内保存
@@ -181,9 +215,6 @@ moon_id=$(cat /var/lib/zerotier-one/identity.public | cut -d ':' -f1)
 echo -e "Your ZeroTier moon id is \033[0;31m$moon_id\033[0m, you could orbit moon using \033[0;31m\"zerotier-cli orbit $moon_id $moon_id\"\033[0m"
 echo -e "++++++++++++你的 ZeroTier moon id 是+++++++++++++\\n\\n                $moon_id\\n\\nWindows客户端加入moon服务器，在终端输入:\\n\\ncd C:\ProgramData\ZeroTier\One\\n\\n接着输入:\\n\\nzerotier-cli orbit $moon_id $moon_id\\n\\n\\n+++++++++++++检查是否加入moon服务器++++++++++++++\\n\\n在终端输入 如下命令:\\n\\nzerotier-cli listpeers\\n\\n\\n++++++++如果想把服务器控制器也加入节点中+++++++++\\n\\n在容器里加入Network ID就可以了，输入如下进入容器:\\n\\ndocker exec -it ztncui bash\\n\\nzerotier-cli join Network ID" > /opt/key-networks/ztncui/etc/httpfs/moon使用说明.txt
 ```
-
-###  以下步骤为创建 planet 文件，做到真正意义上自建 zerotier planet器
-https://github.com/MINGERTAI/QTV/blob/main/docker-zerotier-aio-zh/planet.tar.gz
 
 ###  以下步骤为创建 moon
 ```
