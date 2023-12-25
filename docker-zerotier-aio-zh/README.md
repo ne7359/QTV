@@ -97,9 +97,9 @@ services:
       - 3443:3443
       - 9993:9993/udp
     volumes:
-      - /home/zerotier-aio/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
-      - /home/zerotier-aio/var/lib/zerotier-one:/var/lib/zerotier-one
-      - /home/zerotier-aio/etc/zt-mkworld:/etc/zt-mkworld
+      - /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
+      - /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one
+      - /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld
     environment:
       - PUID=0
       - PGID=0
@@ -167,7 +167,7 @@ wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planet.tar.gz
 ```
 呼出identity.public里的字符串 注：如 docker 挂载到宿主机用下面命令，如没挂载到宿主机那只能进入 docker 容器 cat /var/lib/zerotier-one/identity.public
 ```
-cat /home/zerotier-aio/var/lib/zerotier-one/identity.public
+cat /home/zerotier/var/lib/zerotier-one/identity.public
 ```
 呼出内容如下，复制root@ubuntuserver2204:~#前所有代码，去粘贴到 mkworld.cpp 修改 roots.back().identity = Identity("填写identity.public里的字符串");
 ```
@@ -185,9 +185,9 @@ cat /home/zerotier-aio/var/lib/zerotier-one/identity.public
 source ./build.sh
 ./mkworld
 mv ./world.bin ./planet
-cp -r ./planet /home/zerotier-aio/var/lib/zerotier-one/                       # 替换原planet使成为真正的独立于zerotier官方服务器的 Zerotier Planet服务器
-cp -r ./planet /home/zerotier-aio/opt/key-networks/ztncui/etc/httpfs/         # 供网页端下载
-cp -r ./planet /home/zerotier-aio/etc/zt-mkworld                              # 备份保存
+cp -r ./planet /home/zerotier/var/lib/zerotier-one/                       # 替换原planet使成为真正的独立于zerotier官方服务器的 Zerotier Planet服务器
+cp -r ./planet /home/zerotier/opt/key-networks/ztncui/etc/httpfs/         # 供网页端下载
+cp -r ./planet /home/zerotier/etc/zt-mkworld                              # 备份保存
 ```
 
 ---
