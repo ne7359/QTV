@@ -40,20 +40,15 @@ docker run -itd --name zerotier-aio-zh --hostname zerotier-aio-zh --net bridge -
 
 ## Docker Compose使用指南
 
-- armv7(armv7构建耗时超过6h导致GitHub Action无法完成构建镜像，请自行构建，命令如下)
-
-```
-git clone https://github.com/niliovo/zerotier-aio-zh.git && cd zerotier-aio-zh/dockerfile && docker build -t zerotier-aio-zh .
-```
-
 - amd64/arm64
 - host模式
 
+创建 docker-compose.yml
 ```compose.yml
-  zerotier-aio-zh:
-    image: niliaerith/zerotier-aio-zh:latest
-    container_name: zerotier-aio-zh
-    hostname: zerotier-aio-zh
+  zerotier-aio:
+    image: zerotier-aio:latest
+    container_name: zerotier
+    hostname: zerotier
     restart: always
     cap_add:
       - ALL
@@ -61,32 +56,33 @@ git clone https://github.com/niliovo/zerotier-aio-zh.git && cd zerotier-aio-zh/d
       - /dev/net/tun
     network_mode: host
     volumes:
-      - /your_path/zerotier-aio-zh/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
-      - /your_path/zerotier-aio-zh/var/lib/zerotier-one:/var/lib/zerotier-one
-      - /your_path/zerotier-aio-zh/etc/zt-mkworld:/etc/zt-mkworld
+      - /home/zerotier-aio/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
+      - /home/zerotier-aio/var/lib/zerotier-one:/var/lib/zerotier-one
+      - /home/zerotier-aio/etc/zt-mkworld:/etc/zt-mkworld
     environment:
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
       - AUTOGEN_PLANET=0
       - NODE_ENV=production
-      - HTTPS_HOST=xxx.xxx.xxx.xxx
+      - HTTPS_HOST=xxx.xxx.xxx.xxx  输入你的宿主机ip地址
       - HTTPS_PORT=3443
       - HTTP_PORT=3000
       - HTTP_ALL_INTERFACES=yes
-      - MYDOMAIN=ztncui.docker.test
-      - ZTNCUI_PASSWD=YourPassWD
-      - MYADDR=PublicIP
+      - MYDOMAIN=ztncui.docker.test 注：输入你用于WebUI网址域名，动态生成 TLS 证书（如果不存在）
+      - ZTNCUI_PASSWD=WebUI密码 注：网页控制器密码，用户名默认为admin
+      - MYADDR=你的公网ip地址  注：安装zerotier宿主机 ip地址
     privileged: true
 ```
 
 - bridge模式
 
+创建 docker-compose.yml
 ```compose.yml
-  zerotier-aio-zh:
-    image: niliaerith/zerotier-aio-zh:latest
-    container_name: zerotier-aio-zh
-    hostname: zerotier-aio-zh
+  zerotier-aio:
+    image: zerotier-aio:latest
+    container_name: zerotier
+    hostname: zerotier
     restart: always
     cap_add:
       - ALL
@@ -99,9 +95,9 @@ git clone https://github.com/niliovo/zerotier-aio-zh.git && cd zerotier-aio-zh/d
       - 3443:3443
       - 9993:9993/udp
     volumes:
-      - /your_path/zerotier-aio-zh/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
-      - /your_path/zerotier-aio-zh/var/lib/zerotier-one:/var/lib/zerotier-one
-      - /your_path/zerotier-aio-zh/etc/zt-mkworld:/etc/zt-mkworld
+      - /home/zerotier-aio/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
+      - /home/zerotier-aio/var/lib/zerotier-one:/var/lib/zerotier-one
+      - /home/zerotier-aio/etc/zt-mkworld:/etc/zt-mkworld
     environment:
       - PUID=0
       - PGID=0
@@ -113,8 +109,8 @@ git clone https://github.com/niliovo/zerotier-aio-zh.git && cd zerotier-aio-zh/d
       - HTTP_PORT=3000
       - HTTP_ALL_INTERFACES=yes
       - MYDOMAIN=ztncui.docker.test
-      - ZTNCUI_PASSWD=YourPassWD
-      - MYADDR=PublicIP
+      - ZTNCUI_PASSWD=你的密码  注：网页控制器密码，用户名默认为admin
+      - MYADDR=你的公网ip地址  注：安装zerotier宿主机 ip地址
     privileged: true
 ```
 
