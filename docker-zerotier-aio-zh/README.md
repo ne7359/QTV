@@ -44,8 +44,10 @@ docker run -itd --name zerotier --hostname zerotier --net bridge -p3000:3000 -p3
 - amd64/arm64
 - host模式
 
-创建 docker-compose.yml
+创建 docker-compose.yml 修改权限为777 然后输入 docker-compose up -d 运行zerotier 查看当前正常运行的容器：docker ps
 ```compose.yml
+version: '2.0'
+services:
   zerotier-aio:
     image: zerotier-aio:latest
     container_name: zerotier
@@ -64,9 +66,9 @@ docker run -itd --name zerotier --hostname zerotier --net bridge -p3000:3000 -p3
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - AUTOGEN_PLANET=0
+      - AUTOGEN_PLANET=1
       - NODE_ENV=production
-      - HTTPS_HOST=127.0.0.1  输入你的宿主机ip地址
+      - HTTPS_HOST=xxx.xxx.xxx.xxx  输入你的宿主机ip地址
       - HTTPS_PORT=3443
       - HTTP_PORT=3000
       - HTTP_ALL_INTERFACES=yes
@@ -78,7 +80,7 @@ docker run -itd --name zerotier --hostname zerotier --net bridge -p3000:3000 -p3
 
 - bridge模式
 
-创建 docker-compose.yml
+创建 docker-compose.yml 修改权限为777 然后输入 docker-compose up -d 运行zerotier 查看当前正常运行的容器：docker ps
 ```compose.yml
   zerotier-aio:
     image: zerotier-aio:latest
@@ -103,7 +105,7 @@ docker run -itd --name zerotier --hostname zerotier --net bridge -p3000:3000 -p3
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - AUTOGEN_PLANET=0
+      - AUTOGEN_PLANET=1
       - NODE_ENV=production
       - HTTPS_HOST=xxx.xxx.xxx.xxx
       - HTTPS_PORT=3443
