@@ -21,3 +21,4 @@ mv ./world.bin ./planet
 cp -r ./planet /home/zerotier-aio/etc/zt-mkworld
 cp -r ./planet /home/zerotier-aio/opt/key-networks/ztncui/etc/httpfs
 cp -r ./planet /home/zerotier-aio/var/lib/zerotier-one
+docker restart ztncui
