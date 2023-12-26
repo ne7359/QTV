@@ -17,13 +17,12 @@ identity=`cat /var/lib/zerotier-one/identity.public`
 echo "identity :$identity=============================================="
 apt-get -y install build-essential
 apt-get install git -y
-git clone https://ghproxy.markxu.online/https://github.com/zerotier/ZeroTierOne.git
-cd ./ZeroTierOne/attic/world/
-sed -i '/roots.push_back/d' ./mkworld.cpp
-sed -i '/roots.back()/d' ./mkworld.cpp 
-sed -i '85i roots.push_back(World::Root());' ./mkworld.cpp 
-sed -i '86i roots.back().identity = Identity(\"'"$identity"'\");' ./mkworld.cpp 
-sed -i '87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));' ./mkworld.cpp 
+wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
+sed -i "/roots.push_back/d" ./mkworld.cpp
+sed -i "/roots.back()/d" ./mkworld.cpp 
+sed -i "85i roots.push_back(World::Root());" ./mkworld.cpp 
+sed -i "86i roots.back().identity = Identity(\"'"$identity"'\");" ./mkworld.cpp 
+sed -i "87i roots.back().stableEndpoints.push_back(InetAddress(\"'"$addr"'\"));" ./mkworld.cpp 
 source ./build.sh
 sleep 8s
 ./mkworld
