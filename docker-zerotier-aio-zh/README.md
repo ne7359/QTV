@@ -63,7 +63,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - AUTOGEN_PLANET=1
+      - AUTOGEN_PLANET=0
       - NODE_ENV=production
       - HTTPS_HOST=xxx.xxx.xxx.xxx  输入你的宿主机ip地址
       - HTTPS_PORT=3443
@@ -104,7 +104,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
-      - AUTOGEN_PLANET=1
+      - AUTOGEN_PLANET=0
       - NODE_ENV=production
       - HTTPS_HOST=xxx.xxx.xxx.xxx
       - HTTPS_PORT=3443
