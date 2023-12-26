@@ -33,7 +33,7 @@ docker run -itd --name ztncui --hostname ztncui --net host --restart always --ca
 - bridge模式
 
 ```sh
-docker run -itd --name ztncui --hostname ztncui --net bridge -p3000:3000 -p3180:3180 -p3443:3443 -p9993:9993/udp --restart always --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun -v /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc -v /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one -v /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai -e AUTOGEN_PLANET=0 -e NODE_ENV=production -e HTTPS_HOST=127.0.0.1 -e HTTPS_PORT=3443 -e HTTP_PORT=3000 -e HTTP_ALL_INTERFACES=yes -e MYDOMAIN=你的域名 -e ZTNCUI_PASSWD=你的密码 -e MYADDR=你的公网ip --privileged=true zerotier-aio:latest
+docker run -itd --name ztncui --hostname ztncui --net bridge -p3000:3000 -p3180:3180 -p3443:3443 -p9993:9993/udp --restart always --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun -v /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc -v /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one -v /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai -e AUTOGEN_PLANET=0 -e NODE_ENV=production -e HTTPS_HOST=0.0.0.0 -e HTTPS_PORT=3443 -e HTTP_PORT=3000 -e HTTP_ALL_INTERFACES=yes -e MYDOMAIN=你的域名 -e ZTNCUI_PASSWD=admin -e MYADDR=192.168.0.77 --privileged=true zerotier-aio:latest
 ```
 
 ## Docker Compose使用指南
