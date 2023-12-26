@@ -18,7 +18,6 @@ source ./build.sh
 sleep 8s
 ./mkworld
 mv ./world.bin ./planet
-cp -r ./planet /var/lib/zerotier-one/
-mkdir /root/back-Planet
-sudo chmod 777 /root/back-Planet
-cp -r ./planet /root/back-Planet
+cp -r ./planet /home/zerotier-aio/etc/zt-mkworld
+cp -r ./planet /home/zerotier-aio/opt/key-networks/ztncui/etc/httpfs
+cp -r ./planet /home/zerotier-aio/var/lib/zerotier-one
