@@ -25,10 +25,11 @@ source ./build.sh
 sleep 8s
 ./mkworld
 mv ./world.bin ./planet
-cp -rf ./planet /var/lib/zerotier-one/
-cp -rf ./planet /root
+cp -r ./planet /var/lib/zerotier-one/
+mkdir /root/back
+cp -r ./planet /root/back/
 systemctl restart zerotier-one.service
-cd && wget https://github.com/MINGERTAI/QTV/raw/main/zerotier-one/ztncui_0.8.7_amd64.deb
+cd && wget https://gitee.com/MINGERTAI/ztncui/releases/download/ztncui_0.8.7/ztncui_0.8.7_amd64.deb
 sudo dpkg -i ztncui_0.8.7_amd64.deb
 cd && cd /opt/key-networks/ztncui/
 sudo sh -c "echo HTTPS_PORT=3443 >> /opt/key-networks/ztncui/.env"
