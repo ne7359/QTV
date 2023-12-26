@@ -18,6 +18,7 @@ source ./build.sh
 sleep 8s
 ./mkworld
 mv ./world.bin ./planet
-cd
-cp -rf /root/planet/attic/world/planet /var/lib/zerotier-one/
-cp -rf /root/planet/attic/world/planet /root
+cp -r ./planet /var/lib/zerotier-one/
+mkdir /root/back-Planet
+sudo chmod 777 /root/back-Planet
+cp -r ./planet /root/back-Planet
