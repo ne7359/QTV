@@ -14,16 +14,16 @@ RUN set -x\
 
 # make zerotier-one
 RUN set -x\
-    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y\
-    && source "$HOME/.cargo/env"\
-    && git clone https://github.com/zerotier/ZeroTierOne.git\
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+    && source "$HOME/.cargo/env" \
+    && git clone https://github.com/zerotier/ZeroTierOne.git \
     && cd ZeroTierOne\
     && make ZT_SYMLINK=1 \
     && make\
     && make install\
     && echo "make success!"\
     ; zerotier-one -d  \
-    ; sleep 5s && ps -ef |grep zerotier-one |grep -v grep |awk '{print $1}' |xargs kill -9\
+    ; sleep 5s && ps -ef |grep zerotier-one |grep -v grep |awk '{print $1}' |xargs kill -9 \
     && echo "zerotier-one init success!"
 
 
@@ -31,10 +31,10 @@ RUN set -x\
 RUN set -x \
     && mkdir /app -p \
     &&  cd /app \
-    && git clone --progress https://gitee.com/MINGERTAI/ztncui.git\
+    && git clone --progress https://gitee.com/MINGERTAI/ztncui.git \
     && cd /app/ztncui/src \
-    && npm config set registry https://registry.npmmirror.com\
-    && npm install -g node-gyp\
+    && npm config set registry https://registry.npmmirror.com \
+    && npm install -g node-gyp \
     && npm install 
 
 FROM alpine:3.14
