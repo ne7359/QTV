@@ -2,7 +2,8 @@
 # debain ubuntu自动安装 zerotier 并设置的为planet服务器
 # addr服务器公网ip+port
 ip=`wget http://ipecho.net/plain -O - -q ; echo`
-addr=$ip/9993
+#addr=$ip/9993
+addr=$ip
 apt autoremove
 apt update -y
 apt install curl -y
