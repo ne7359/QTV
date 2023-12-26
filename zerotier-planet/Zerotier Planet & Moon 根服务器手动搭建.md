@@ -17,7 +17,6 @@ echo "**************************************************************************
 curl -s https://install.zerotier.com/ | sudo bash
  
 identity=`cat /var/lib/zerotier-one/identity.public`
-echo "identity :$identity=============================================="
 apt-get -y install build-essential
 apt-get install git -y
 wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
