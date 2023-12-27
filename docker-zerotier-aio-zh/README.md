@@ -160,20 +160,19 @@ services:
 
 ---
 
-## 自动创建 planet & moon文件，并自动安装，真正 zerotier planet服务器 使用官方方式生成行星文件
+## 自动创建并安装 planet & moon文件，真正 zerotier planet服务器 使用官方方式生成行星文件
 
-在宿主机即安装zerotier planet服务器上，点击下面链接下载 planet&moos.sh 运行它
+在宿主机即安装zerotier planet服务器上，点击下面链接下载 planet&moos.sh 运行它，会自动创建并自动安装planet & moon
+
+如果多台zerotier planet服务器，那就必须用手动修改，查看/root/planet下说明
 ```sh
 wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planet&moos.tar.gz && tar zxvf planet&moos.tar.gz && chmod +x /root/planet && cd /root/planet
 ```
 
 ---
 
-###  如果多台zerotier planet服务器，那就必须用手动创建以备添加zerotier planet服务器宿主机ip地址,以下步骤为手动创建 planet 文件
+###  手动创建以备添加zerotier planet服务器宿主机ip地址,以下步骤为手动创建 planet 文件
 
-```
-wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planet.tar.gz && tar zxvf planet.tar.gz && chmod +x /root/planet && rm -rf planet.tar.gz && cd /root/planet/attic/world
-```
 呼出identity.public里的字符串 注：如 docker 挂载到宿主机用下面命令，如没挂载到宿主机那只能进入 docker 容器 cat /var/lib/zerotier-one/identity.public
 ```
 cat /home/zerotier/var/lib/zerotier-one/identity.public
