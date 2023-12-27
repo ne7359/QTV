@@ -166,7 +166,7 @@ services:
 
 如果多台zerotier planet服务器，那就必须用手动修改，查看/root/planet下说明
 ```sh
-wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planet&moos.tar.gz && tar zxvf planet&moos.tar.gz && chmod +x /root/planet && cd /root/planet
+wget https://gitee.com/MINGERTAI/docker-zerotier-aio-zh/raw/master/planetmoos.tar.gz && tar zxvf planetmoos.tar.gz && chmod +x /root/planet && cd /root/planet
 ```
 
 ---
