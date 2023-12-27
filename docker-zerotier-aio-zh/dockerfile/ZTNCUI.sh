@@ -149,7 +149,7 @@ sed -i "s|) Cancel|) 取消|g" ztncui/src/views/dns.pug
 
 sed -i "s|network controller UI|网络控制器用户界面|g" ztncui/src/views/front_door.pug
 sed -i "s|Logout|注销|g" ztncui/src/views/head_layout.pug
-sed -i "13,14d" ztncui/src/views/index.pug
+sed -i "10,11,12,13,14d" ztncui/src/views/index.pug
 sed -i "s|This network controller has a ZeroTier address of|该控制器的ZeroTier地址为|g" ztncui/src/views/index.pug
 sed -i "s|ZeroTier version|ZeroTier版本为|g" ztncui/src/views/index.pug
 sed -i "s|List all networks on this network controller|列出该网络控制器上的所有网络|g" ztncui/src/views/index.pug
