@@ -237,8 +237,6 @@ docker restart ztncui
 - arm64
 - armv7(未测试，需自行构建镜像)
 
-- ~~i386(node没有此版本，故不支持)~~
-
 # 感谢
 
 - [zerotier/ZeroTierOne](https://github.niliovo.top/zerotier/ZeroTierOne)
