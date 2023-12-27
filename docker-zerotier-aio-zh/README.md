@@ -36,6 +36,25 @@ docker run -itd --name ztncui --hostname ztncui --net host --restart always --ca
 docker run -itd --name ztncui --hostname ztncui --net bridge -p3000:3000 -p3180:3180 -p3443:3443 -p9993:9993/udp --restart always --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun -v /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc -v /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one -v /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld -e PUID=0 -e PGID=0 -e TZ=Asia/Shanghai -e AUTOGEN_PLANET=0 -e NODE_ENV=production -e HTTPS_HOST=0.0.0.0 -e HTTPS_PORT=3443 -e HTTP_PORT=3000 -e HTTP_ALL_INTERFACES=yes -e MYDOMAIN=你的域名 -e ZTNCUI_PASSWD=admin -e MYADDR=192.168.0.77 --privileged=true zerotier-aio:latest
 ```
 
+## 服务器加入网络
+zerotier-cli join Network ID
+## 查看当前加入的网络列表
+zerotier-cli listnetworks
+## 服务器删除网络
+zerotier-cli leave Network ID
+
+---
+
+端口简介：
+
+3000：ztncui http访问
+
+3443：ztncui https访问
+
+9993：9993/tcp 9993/udp 均为zerotier使用 必须开放
+
+3180：planet moon下载端口 如果不需要可不开放
+
 ## Docker Compose使用指南
 
 - amd64/arm64
@@ -43,7 +62,7 @@ docker run -itd --name ztncui --hostname ztncui --net bridge -p3000:3000 -p3180:
 
 创建 docker-compose.yml 修改权限为777 然后输入 docker-compose up -d 运行zerotier 查看当前正常运行的容器：docker ps
 ```compose.yml
-version: '2.0'
+version: '3.0'
 services:
   zerotier-aio:
     image: zerotier-aio:latest
@@ -60,12 +79,12 @@ services:
       - /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one
       - /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=0  # 如果AUTOGEN_PLANET=0设置0，这项不要
+      - PGID=0  # 如果AUTOGEN_PLANET=0设置0，这项不要
       - TZ=Asia/Shanghai
       - AUTOGEN_PLANET=0
       - NODE_ENV=production
-      - HTTPS_HOST=xxx.xxx.xxx.xxx  输入你的宿主机ip地址
+      - HTTPS_HOST=xxx.xxx.xxx.xxx  # 这项可以不要，输入你的宿主机ip地址
       - HTTPS_PORT=3443
       - HTTP_PORT=3000
       - HTTP_ALL_INTERFACES=yes
@@ -79,7 +98,7 @@ services:
 
 创建 docker-compose.yml 修改权限为777 然后输入 docker-compose up -d 运行zerotier 查看当前正常运行的容器：docker ps
 ```compose.yml
-version: '2.0'
+version: '3.0'
 services:
   zerotier-aio:
     image: zerotier-aio:latest
@@ -101,12 +120,12 @@ services:
       - /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one
       - /home/zerotier/etc/zt-mkworld:/etc/zt-mkworld
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=0  # 如果AUTOGEN_PLANET=0设置0，这项不要
+      - PGID=0  # 如果AUTOGEN_PLANET=0设置0，这项不要
       - TZ=Asia/Shanghai
       - AUTOGEN_PLANET=0
       - NODE_ENV=production
-      - HTTPS_HOST=xxx.xxx.xxx.xxx
+      - HTTPS_HOST=xxx.xxx.xxx.xxx  # 这项可以不要，输入你的宿主机ip地址
       - HTTPS_PORT=3443
       - HTTP_PORT=3000
       - HTTP_ALL_INTERFACES=yes
