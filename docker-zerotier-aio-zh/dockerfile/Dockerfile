@@ -54,5 +54,5 @@ EXPOSE 3180/tcp
 EXPOSE 8000/tcp
 EXPOSE 3443/tcp
 
-VOLUME ["/opt/key-networks/ztncui/etc", "/etc/zt-mkworld", "/var/lib/zerotier-one"]
+VOLUME ["/opt/key-networks/ztncui/etc", "/var/lib/zerotier-one"]
 ENTRYPOINT [ "/init" ]
