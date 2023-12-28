@@ -16,7 +16,6 @@ FROM golang:bullseye AS gobuilder
 WORKDIR /buildsrc
 COPY --from=jsbuilder /build/argon2g /buildsrc/argon2g
 COPY --from=jsbuilder /build/fileserv /buildsrc/fileserv
-COPY --from=jsbuilder /build/ztnodeid /buildsrc/ztnodeid
 COPY --from=jsbuilder /build/build-gobinaries.sh /buildsrc/build-gobinaries.sh
 ENV CGO_ENABLED=0
 RUN apt update -y && \ 
