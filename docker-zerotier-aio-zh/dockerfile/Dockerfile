@@ -2,7 +2,7 @@ FROM debian:bullseye-slim AS jsbuilder
 ENV NODEJS_MAJOR=18
 ENV DEBIAN_FRONTEND=noninteractive
 
-LABEL org.opencontainers.image.source="https://github.com/kmahyyg/ztncui-aio"
+LABEL org.opencontainers.image.source="https://gitee.com/MINGERTAI/ztncui-aio.git"
 LABEL MAINTAINER="Key Networks https://key-networks.com"
 LABEL Description="ztncui (a ZeroTier network controller user interface) + ZeroTier network controller"
 
