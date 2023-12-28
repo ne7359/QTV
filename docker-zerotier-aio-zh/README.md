@@ -61,6 +61,42 @@ zerotier-cli leave Network ID
 - host模式
 
 创建 docker-compose.yml 修改权限为777 然后输入 docker-compose up -d 运行zerotier 查看当前正常运行的容器：docker ps
+
+删除自动创建planet文件
+```yml
+version: '3.0'
+services:
+  ztncui:
+    image: zerotier
+    container_name: ztncui
+    hostname: ztncui
+    restart: always
+    cap_add:
+      - ALL
+    devices:
+      - /dev/net/tun
+    network_mode: bridge
+    ports:
+      - 3000:3000
+      - 3180:3180
+      - 4000:4000
+      - 9993:9993/udp
+    volumes:
+      - /home/zerotier/opt/key-networks/ztncui/etc:/opt/key-networks/ztncui/etc
+      - /home/zerotier/var/lib/zerotier-one:/var/lib/zerotier-one
+    environment:
+      - TZ=Asia/Shanghai
+      - NODE_ENV=production
+      - HTTPS_HOST=0.0.0.0
+      - HTTPS_PORT=4000
+      - HTTP_PORT=3000
+      - HTTP_ALL_INTERFACES=yes
+      - MYDOMAIN=
+      - ZTNCUI_PASSWD=admin
+      - MYADDR=192.168.0.77
+    privileged: true
+```
+未册除自动创建planet文件
 ```compose.yml
 version: '3.0'
 services:
